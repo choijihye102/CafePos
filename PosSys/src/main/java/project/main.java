@@ -75,7 +75,9 @@ public class main<P2> {
 		
 		btnNewButton_1.addActionListener(e -> {
 			p2 p2 = new p2();              
-            frame.dispose();                           
+            frame.dispose();    
+            
+            
         });
 		
 		

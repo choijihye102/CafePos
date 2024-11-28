@@ -16,8 +16,10 @@ import java.awt.Color;
 import java.awt.SystemColor;
 
 public class p2 {
+	
 
 	private JFrame frame;
+	private JTextArea textArea;
 
 	/**
 	 * Launch the application.
@@ -26,6 +28,7 @@ public class p2 {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					 
 					p2 window = new p2();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
@@ -77,6 +80,11 @@ public class p2 {
 		btnNewButton_2.setBounds(12, 52, 120, 120);
 		panel.add(btnNewButton_2);
 		
+		
+		
+		
+
+		
 		JButton btnNewButton_2_1 = new JButton("New button");
 		btnNewButton_2_1.setIcon(new ImageIcon("D:\\ncs\\workspace(java)\\Ch20_project\\coffee\\바닐라라떼.jpg"));
 		btnNewButton_2_1.setBounds(176, 52, 120, 120);
@@ -88,6 +96,9 @@ public class p2 {
 		textPane.setText("  아이스 아메리카노\r\n        2,500원");
 		textPane.setBounds(12, 182, 120, 42);
 		panel.add(textPane);
+	
+		
+
 		
 		JTextPane textPane_1 = new JTextPane();
 		textPane_1.setText("    바닐라 라떼\r\n       3,500원");
@@ -314,7 +325,7 @@ public class p2 {
 		frame.getContentPane().add(btnNewButton_1);
 		
 		JTextArea textArea = new JTextArea();
-		textArea.setBounds(426, 24, 236, 336);
+		textArea.setBounds(361, 24, 332, 336);
 		frame.getContentPane().add(textArea);
 		
 		JButton btnNewButton_5 = new JButton("할인조회");
@@ -322,4 +333,13 @@ public class p2 {
 		btnNewButton_5.setBounds(596, 448, 97, 46);
 		frame.getContentPane().add(btnNewButton_5);
 	}
-}
+	
+	
+	}
+	
+
+	
+
+
+
+
