@@ -3,6 +3,7 @@
   <groupId>PosSys</groupId>
   <artifactId>PosSys</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <!-- Dependencies section added here -->
   <dependencies>
     <!-- org.json dependency -->
     <dependency>
