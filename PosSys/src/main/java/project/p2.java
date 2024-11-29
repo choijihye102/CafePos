@@ -5,21 +5,28 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JTabbedPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+
 import java.awt.BorderLayout;
 import javax.swing.JButton;
 import java.awt.Font;
 import javax.swing.JTable;
 import javax.swing.ImageIcon;
 import javax.swing.JTextPane;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.JTextArea;
 import java.awt.Color;
 import java.awt.SystemColor;
+import javax.swing.JComboBox;
+import javax.swing.JSpinner;
 
 public class p2 {
 	
 
 	private JFrame frame;
 	private JTextArea textArea;
+	private JTable table;
+	private JTable table_1;
 
 	/**
 	 * Launch the application.
@@ -315,31 +322,42 @@ public class p2 {
 		panel_4.add(textPane_3_1_2_5);
 		
 		JButton btnNewButton = new JButton("현금결제");
-		btnNewButton.setFont(new Font("나눔고딕", Font.BOLD, 16));
 		btnNewButton.setBounds(479, 448, 97, 46);
+		btnNewButton.setFont(new Font("나눔고딕", Font.BOLD, 16));
 		frame.getContentPane().add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("카드결제");
-		btnNewButton_1.setFont(new Font("나눔고딕", Font.BOLD, 16));
 		btnNewButton_1.setBounds(361, 448, 97, 46);
+		btnNewButton_1.setFont(new Font("나눔고딕", Font.BOLD, 16));
 		frame.getContentPane().add(btnNewButton_1);
 		
-		JTextArea textArea = new JTextArea();
-		textArea.setBounds(361, 24, 332, 336);
-		frame.getContentPane().add(textArea);
-		
 		JButton btnNewButton_5 = new JButton("할인조회");
-		btnNewButton_5.setFont(new Font("나눔고딕", Font.BOLD, 16));
 		btnNewButton_5.setBounds(596, 448, 97, 46);
+		btnNewButton_5.setFont(new Font("나눔고딕", Font.BOLD, 16));
 		frame.getContentPane().add(btnNewButton_5);
+		
+		
+	    
+	    
+		table = new JTable();
+		table.setBounds(361, 21, 332, 338);
+		frame.getContentPane().add(table);
+		
+		
+		
+		table_1 = new JTable();
+		table_1.setBounds(361, 369, 215, 69);
+		frame.getContentPane().add(table_1);
+		
+		JSpinner spinner = new JSpinner();
+		spinner.setBounds(588, 369, 42, 69);
+		frame.getContentPane().add(spinner);
+		
+		JButton btnNewButton_6 = new JButton("상품삭제");
+		btnNewButton_6.setBounds(630, 369, 85, 69);
+		frame.getContentPane().add(btnNewButton_6);
+	}
 	}
 	
-	
-	}
-	
 
 	
-
-
-
-
