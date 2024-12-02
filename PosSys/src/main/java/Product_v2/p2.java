@@ -2,7 +2,16 @@ package Product_v2;
 
 import java.awt.*;
 
+
+
 import javax.swing.*;
+
+import javax.swing.event.ChangeListener;
+import javax.swing.event.ChangeEvent; // ChangeEvent도 필요
+
+import javax.swing.event.TableModelListener;
+import javax.swing.event.TableModelEvent;
+
 
 
 import java.awt.BorderLayout;
@@ -10,7 +19,13 @@ import java.awt.event.*;
 import java.net.URL;
 
 import javax.swing.table.*;
+import javax.swing.text.JTextComponent;
+
 import java.sql.*;
+import java.util.Vector;
+
+
+
 
 
 public class p2 implements ActionListener {
@@ -19,7 +34,7 @@ public class p2 implements ActionListener {
 	ResultSet rs = null;                    // SQL문 실행 결과를 가지고 있는 객체
 	String sql = null;                      // SQL문을 저장하는 문자열 변수.
 	
-	DefaultTableModel model;
+	 DefaultTableModel model;
 	JTable table;
 	DefaultTableModel model2;
 	JTable table2;
@@ -29,9 +44,7 @@ public class p2 implements ActionListener {
 	private JFrame frame;
 	private JTextArea textArea;
 
-	/**
-	 * Launch the application.
-	 */
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -552,7 +565,7 @@ public class p2 implements ActionListener {
 		JPanel panel0 = new JPanel();
 		
 		String[] header = 
-			{"상 품 명","단 가","수 량"};
+			{"상 품 명","단 가","수 량","총 액"};
 		
 		model = new DefaultTableModel(header, 0);
 		
@@ -562,6 +575,10 @@ public class p2 implements ActionListener {
 				table, 
 				ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED, 
 				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		
+	
+		
+		
 		
 		String[] header2 = 
 			{"총 금 액","사용 마일리지"};
@@ -579,13 +596,92 @@ public class p2 implements ActionListener {
 		jsp2.setPreferredSize(new Dimension(245,80));
 		
 		
-	//준영님코드 set
-		JSpinner spinner = new JSpinner();
+		
+		
+		
+	    //수량조절
+		JSpinner spinner = new JSpinner(new SpinnerNumberModel(1, 1, 100, 1));
 		spinner.setBounds(588, 369, 42, 69);
 		frame.getContentPane().add(spinner);
-		JButton btnNewButton_6 = new JButton("상품삭제");
+		
+		
+		// 테이블에서 행이 선택될 때, 선택된 상품의 수량을 JSpinner에 업데이트
+		table.getSelectionModel().addListSelectionListener(e -> {
+		    // 선택된 행이 있으면 JSpinner 값 업데이트
+		    int selectedRow = table.getSelectedRow();
+		    if (selectedRow >= 0) {
+		        int quantity = (Integer) model.getValueAt(selectedRow, 2);  // 선택된 행의 수량
+		        spinner.setValue(quantity);  // JSpinner 값 업데이트
+		    }
+		});
+		
+		
+		
+		
+		spinner.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                int selectedRow = table.getSelectedRow();
+                if (selectedRow >= 0) {
+                    int quantity = (Integer) spinner.getValue();
+                    model.setValueAt(quantity, selectedRow, 2);
+
+                    // 총액 계산
+                    Object unitPriceObj = model.getValueAt(selectedRow, 1);
+                    if (unitPriceObj instanceof Number) {
+                        int unitPrice = ((Number) unitPriceObj).intValue();
+                        int totalPrice = unitPrice * quantity;
+                        model.setValueAt(totalPrice, selectedRow, 3);
+                        
+                        
+                    }
+                    updateTotalNum();
+                    
+                    
+                }
+                
+            }
+        });
+		
+		
+		
+		
+		
+		JButton btnNewButton_6 = new JButton("상품삭제");//상품삭제버튼
 		btnNewButton_6.setBounds(630, 369, 85, 69);
 		frame.getContentPane().add(btnNewButton_6);
+		
+		btnNewButton_6.addActionListener(new ActionListener() {
+		    @Override
+		    public void actionPerformed(ActionEvent e) {
+		        int selectedRow = table.getSelectedRow(); // 선택된 행 인덱스
+		        if (selectedRow != -1) {
+		            // JTable에서 행 삭제 전 해당 행의 총액 값 가져오기
+		            Object totalObj = model.getValueAt(selectedRow, 3); // 총액 컬럼 값
+		            if (totalObj instanceof Number) {
+		                int totalValue = ((Number) totalObj).intValue();
+		                totalnum -= totalValue; // 삭제된 상품의 총액만큼 totalnum에서 빼기
+		            }
+
+		            // 모델에서 해당 행 삭제
+		            model.removeRow(selectedRow);
+
+		            // 총액 갱신
+		            updateTotalNum(); // updateTotalNum()을 호출하여 totalnum을 다시 계산
+
+		            // 테이블을 새로 고침
+		            model.fireTableDataChanged(); // model 갱신
+		            model2.fireTableDataChanged(); // model2 갱신
+
+		        } else {
+		            JOptionPane.showMessageDialog(frame, "행을 선택하세요.");
+		        }
+		    }
+		});
+		
+		
+		
+		
 		
 	//	spinner.setSize(new Dimension(40, 80));
 		spinner.setPreferredSize(new Dimension(40, 80));
@@ -666,6 +762,23 @@ public class p2 implements ActionListener {
 		
 		
 	}
+	
+	
+	
+	private int calculateTotalAmount(DefaultTableModel model3) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	private void updateTotal() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	protected void updateTotalPrice(DefaultTableModel model3, int selectedRow) {
+		// TODO Auto-generated method stub
+		
+	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -711,9 +824,14 @@ public class p2 implements ActionListener {
 			}
 		}  // connect() 메서드 end
 		
+		private int totalnum = 0;
+		
+		
 		
 		// EMP 테이블의 전체 사원 목록을 조회하는 메서드.
 		void select(String name) {
+			
+			;
 			
 			try {
 				// 1. 오라클 데이터베이스로 전송할 SQL문 작성.
@@ -725,16 +843,39 @@ public class p2 implements ActionListener {
 				// 2. 오라클 데이터베이스에 SQL문 전송 및 SQL문 실행.
 				rs = pstmt.executeQuery();
 				
+				
+				
 				while(rs.next()) {
 					String pro_name  = rs.getString("pro_name");
 					int pro_price  = rs.getInt("pro_price");
+					int quantity = 1;
+					int total = pro_price * quantity;
+					
+					
+					totalnum += total;
+					
 					
 					Object[] data = 
-						{pro_name, pro_price, 1};
+						{pro_name, pro_price, quantity, total};
 					
 					// 저장된 한 개의 레코드(데이터)를 model에 추가해 주면 됨.
 					model.addRow(data);
+					
+					
 				}
+				
+				// 디버깅 로그 추가
+		        System.out.println("Data added to model. Rows: " + model.getRowCount());
+				
+				updateTotalNum();
+				
+				SwingUtilities.invokeLater(() -> {
+				    table2.invalidate();
+				    table2.validate();
+				    table2.repaint();
+				});
+						
+				
 				
 				// 3. 오라클 데이터베이스에 연결되어 있던 자원 종료
 				rs.close(); pstmt.close(); con.close();
@@ -745,9 +886,37 @@ public class p2 implements ActionListener {
 			}
 			
 		}  // select() 메서드 end
+		
+		private void updateTotalNum() {
+		    totalnum = 0;  // 총합 초기화
+		    for (int i = 0; i < model.getRowCount(); i++) {
+		        Object totalObj = model.getValueAt(i, 3);
+		        if (totalObj instanceof Number) {
+		            totalnum += ((Number) totalObj).intValue();
+		        }
+		    }
+		    
+		 // 기존 모델 데이터를 완전히 교체
+		    DefaultTableModel newModel2 = new DefaultTableModel(
+		        new String[] {"총 금 액", "사용 마일리지"}, 0);
+		    newModel2.addRow(new Object[] {totalnum}); // 총합 추가
+
+		    table2.setModel(newModel2); // 테이블에 새 모델 설정
+		    
+		    
+		    
+		 
+		 
+		}
+		
+		
+		
 
 		
+		
 	}
+
+
 	
 
 	
