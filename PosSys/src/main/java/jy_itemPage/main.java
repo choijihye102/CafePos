@@ -75,7 +75,7 @@ public class main<P2> {
 		frame.getContentPane().add(lblNewLabel);
 		
 		btnNewButton_1.addActionListener(e -> {
-			p2 p2 = new p2();              
+			p2_before p2 = new p2_before();              
             frame.dispose();                           
         });
 		

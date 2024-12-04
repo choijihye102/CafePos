@@ -2,17 +2,30 @@ package Product_v2;
 
 import java.awt.*;
 
+
+
 import javax.swing.*;
+
+import javax.swing.event.ChangeListener;
+import javax.swing.event.ChangeEvent; // ChangeEvent도 필요
+
+import javax.swing.event.TableModelListener;
+import javax.swing.event.TableModelEvent;
+
 
 
 import java.awt.BorderLayout;
 import java.awt.event.*;
 import java.net.URL;
 
-import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.table.*;
+import javax.swing.text.JTextComponent;
+
 import java.sql.*;
+import java.util.Vector;
+
+
+
 
 
 public class p2 implements ActionListener {
@@ -21,7 +34,7 @@ public class p2 implements ActionListener {
 	ResultSet rs = null;                    // SQL문 실행 결과를 가지고 있는 객체
 	String sql = null;                      // SQL문을 저장하는 문자열 변수.
 	
-	DefaultTableModel model;
+	 DefaultTableModel model;
 	JTable table;
 	DefaultTableModel model2;
 	JTable table2;
@@ -31,9 +44,7 @@ public class p2 implements ActionListener {
 	private JFrame frame;
 	private JTextArea textArea;
 
-	/**
-	 * Launch the application.
-	 */
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -96,23 +107,55 @@ public class p2 implements ActionListener {
 		panel.add(btnNewButton_3);
 		
 		JButton btnNewButton_4 = new JButton("New button");
-		btnNewButton_4.setIcon(new ImageIcon("D:\\ncs\\workspace(java)\\Ch20_project\\coffee\\카라멜 마끼아또.jpg"));
+		 try {
+	            URL imageUrl = p2.class.getResource("/coffee/카라멜 마끼아또.jpg"); // 리소스 경로 설정
+	            if (imageUrl != null) {
+	                ImageIcon icon = new ImageIcon(imageUrl);
+	                btnNewButton_4.setIcon(icon);
+	            } else {
+	                System.out.println("이미지를 찾을 수 없습니다!");
+	            }
+       } catch (Exception e) {
+           System.out.println("이미지를 로드하는 중 오류 발생: " + e.getMessage());
+       }
+		 btnNewButton_4.setText("카라멜 마끼아또");
+		
 		btnNewButton_4.setBounds(176, 255, 120, 120);
 		panel.add(btnNewButton_4);
 		
 		JButton btnNewButton_2 = new JButton("New button");
-		btnNewButton_2.setIcon(new ImageIcon("D:\\ncs\\workspace(java)\\Ch20_project\\coffee\\아이스 아메리카노.jpg"));
+		 try {
+	            URL imageUrl = p2.class.getResource("/coffee/아이스 아메리카노.jpg"); // 리소스 경로 설정
+	            if (imageUrl != null) {
+	                ImageIcon icon = new ImageIcon(imageUrl);
+	                btnNewButton_2.setIcon(icon);
+	            } else {
+	                System.out.println("이미지를 찾을 수 없습니다!");
+	            }
+       } catch (Exception e) {
+           System.out.println("이미지를 로드하는 중 오류 발생: " + e.getMessage());
+       }
+		 btnNewButton_2.setText("아이스 아메리카노");
+		 
 		btnNewButton_2.setBounds(12, 52, 120, 120);
 		panel.add(btnNewButton_2);
 		
 		
-		
-		
-
-		
 		JButton btnNewButton_2_1 = new JButton("New button");
-		btnNewButton_2_1.setIcon(new ImageIcon("D:\\ncs\\workspace(java)\\Ch20_project\\coffee\\바닐라라떼.jpg"));
-		btnNewButton_2_1.setBounds(176, 52, 120, 120);
+		 try {
+	            URL imageUrl = p2.class.getResource("/coffee/카페라떼.jpg"); // 리소스 경로 설정
+	            if (imageUrl != null) {
+	                ImageIcon icon = new ImageIcon(imageUrl);
+	                btnNewButton_2_1.setIcon(icon);
+	            } else {
+	                System.out.println("이미지를 찾을 수 없습니다!");
+	            }
+       } catch (Exception e) {
+           System.out.println("이미지를 로드하는 중 오류 발생: " + e.getMessage());
+       }
+       btnNewButton_2_1.setText("바닐라 라떼");
+		
+       btnNewButton_2_1.setBounds(176, 52, 120, 120);
 		panel.add(btnNewButton_2_1);
 		
 		JTextPane textPane = new JTextPane();
@@ -149,22 +192,66 @@ public class p2 implements ActionListener {
 		panel_1.setLayout(null);
 		
 		JButton btnNewButton_2_2 = new JButton("New button");
-		btnNewButton_2_2.setIcon(new ImageIcon("D:\\ncs\\workspace(java)\\Ch20_project\\pasta\\토마토파스타.jpg"));
-		btnNewButton_2_2.setBounds(29, 41, 120, 120);
+		 try {
+	            URL imageUrl = p2.class.getResource("/pasta/토마토 파스타.jpg"); // 리소스 경로 설정
+	            if (imageUrl != null) {
+	                ImageIcon icon = new ImageIcon(imageUrl);
+	                btnNewButton_2_2.setIcon(icon);
+	            } else {
+	                System.out.println("이미지를 찾을 수 없습니다!");
+	            }
+       } catch (Exception e) {
+           System.out.println("이미지를 로드하는 중 오류 발생: " + e.getMessage());
+       }
+       btnNewButton_2_2.setText("토마토 파스타");
+       btnNewButton_2_2.setBounds(29, 41, 120, 120);
 		panel_1.add(btnNewButton_2_2);
 		
 		JButton btnNewButton_2_3 = new JButton("New button");
-		btnNewButton_2_3.setIcon(new ImageIcon("D:\\ncs\\workspace(java)\\Ch20_project\\pasta\\라구파스타.jpg"));
+		 try {
+	            URL imageUrl = p2.class.getResource("/pasta/라구 파스타.jpg"); // 리소스 경로 설정
+	            if (imageUrl != null) {
+	                ImageIcon icon = new ImageIcon(imageUrl);
+	                btnNewButton_2_3.setIcon(icon);
+	            } else {
+	                System.out.println("이미지를 찾을 수 없습니다!");
+	            }
+       } catch (Exception e) {
+           System.out.println("이미지를 로드하는 중 오류 발생: " + e.getMessage());
+       }
+       btnNewButton_2_3.setText("라구 파스타");
 		btnNewButton_2_3.setBounds(186, 41, 120, 120);
 		panel_1.add(btnNewButton_2_3);
 		
 		JButton btnNewButton_2_4 = new JButton("New button");
-		btnNewButton_2_4.setIcon(new ImageIcon("D:\\ncs\\workspace(java)\\Ch20_project\\pasta\\바질페스토파스타.jpg"));
+		 try {
+	            URL imageUrl = p2.class.getResource("/pasta/바질페스토 파스타.jpg"); // 리소스 경로 설정
+	            if (imageUrl != null) {
+	                ImageIcon icon = new ImageIcon(imageUrl);
+	                btnNewButton_2_4.setIcon(icon);
+	            } else {
+	                System.out.println("이미지를 찾을 수 없습니다!");
+	            }
+       } catch (Exception e) {
+           System.out.println("이미지를 로드하는 중 오류 발생: " + e.getMessage());
+       }
+       btnNewButton_2_4.setText("바질페스토 파스타");
 		btnNewButton_2_4.setBounds(29, 265, 120, 120);
 		panel_1.add(btnNewButton_2_4);
 		
 		JButton btnNewButton_2_5 = new JButton("New button");
-		btnNewButton_2_5.setIcon(new ImageIcon("D:\\ncs\\workspace(java)\\Ch20_project\\pasta\\알리오올리오 파스타.jpg"));
+		 try {
+	            URL imageUrl = p2.class.getResource("/pasta/알리오올리오.jpg"); // 리소스 경로 설정
+	            if (imageUrl != null) {
+	                ImageIcon icon = new ImageIcon(imageUrl);
+	                btnNewButton_2_5.setIcon(icon);
+	            } else {
+	                System.out.println("이미지를 찾을 수 없습니다!");
+	            }
+       } catch (Exception e) {
+           System.out.println("이미지를 로드하는 중 오류 발생: " + e.getMessage());
+       }
+       btnNewButton_2_5.setText("알리오올리오");
 		btnNewButton_2_5.setBounds(186, 265, 120, 120);
 		panel_1.add(btnNewButton_2_5);
 		
@@ -198,22 +285,66 @@ public class p2 implements ActionListener {
 		panel_2.setLayout(null);
 		
 		JButton btnNewButton_2_6 = new JButton("New button");
-		btnNewButton_2_6.setIcon(new ImageIcon("D:\\ncs\\workspace(java)\\Ch20_project\\drink\\레몬에이드.jpg"));
+		 try {
+	            URL imageUrl = p2.class.getResource("/drink/레몬에이드.jpg"); // 리소스 경로 설정
+	            if (imageUrl != null) {
+	                ImageIcon icon = new ImageIcon(imageUrl);
+	                btnNewButton_2_6.setIcon(icon);
+	            } else {
+	                System.out.println("이미지를 찾을 수 없습니다!");
+	            }
+       } catch (Exception e) {
+           System.out.println("이미지를 로드하는 중 오류 발생: " + e.getMessage());
+       }
+       btnNewButton_2_6.setText("레몬에이드");
 		btnNewButton_2_6.setBounds(34, 35, 120, 120);
 		panel_2.add(btnNewButton_2_6);
 		
 		JButton btnNewButton_2_7 = new JButton("New button");
-		btnNewButton_2_7.setIcon(new ImageIcon("D:\\ncs\\workspace(java)\\Ch20_project\\drink\\블루에이드.jpg"));
+		 try {
+	            URL imageUrl = p2.class.getResource("/drink/블루에이드.jpg"); // 리소스 경로 설정
+	            if (imageUrl != null) {
+	                ImageIcon icon = new ImageIcon(imageUrl);
+	                btnNewButton_2_7.setIcon(icon);
+	            } else {
+	                System.out.println("이미지를 찾을 수 없습니다!");
+	            }
+       } catch (Exception e) {
+           System.out.println("이미지를 로드하는 중 오류 발생: " + e.getMessage());
+       }
+       btnNewButton_2_7.setText("블루에이드");
 		btnNewButton_2_7.setBounds(193, 35, 120, 120);
 		panel_2.add(btnNewButton_2_7);
 		
 		JButton btnNewButton_2_8 = new JButton("New button");
-		btnNewButton_2_8.setIcon(new ImageIcon("D:\\ncs\\workspace(java)\\Ch20_project\\drink\\사이다.jpg"));
+		 try {
+	            URL imageUrl = p2.class.getResource("/drink/사이다.jpg"); // 리소스 경로 설정
+	            if (imageUrl != null) {
+	                ImageIcon icon = new ImageIcon(imageUrl);
+	                btnNewButton_2_8.setIcon(icon);
+	            } else {
+	                System.out.println("이미지를 찾을 수 없습니다!");
+	            }
+       } catch (Exception e) {
+           System.out.println("이미지를 로드하는 중 오류 발생: " + e.getMessage());
+       }
+       btnNewButton_2_8.setText("사이다");
 		btnNewButton_2_8.setBounds(34, 225, 120, 120);
 		panel_2.add(btnNewButton_2_8);
 		
 		JButton btnNewButton_2_9 = new JButton("New button");
-		btnNewButton_2_9.setIcon(new ImageIcon("D:\\ncs\\workspace(java)\\Ch20_project\\drink\\콜라.jpg"));
+		 try {
+	            URL imageUrl = p2.class.getResource("/drink/콜라.jpg"); // 리소스 경로 설정
+	            if (imageUrl != null) {
+	                ImageIcon icon = new ImageIcon(imageUrl);
+	                btnNewButton_2_9.setIcon(icon);
+	            } else {
+	                System.out.println("이미지를 찾을 수 없습니다!");
+	            }
+       } catch (Exception e) {
+           System.out.println("이미지를 로드하는 중 오류 발생: " + e.getMessage());
+       }
+       btnNewButton_2_9.setText("콜라");
 		btnNewButton_2_9.setBounds(193, 225, 120, 120);
 		panel_2.add(btnNewButton_2_9);
 		
@@ -247,22 +378,66 @@ public class p2 implements ActionListener {
 		panel_3.setLayout(null);
 		
 		JButton btnNewButton_2_6_1 = new JButton("New button");
-		btnNewButton_2_6_1.setIcon(new ImageIcon("D:\\ncs\\workspace(java)\\Ch20_project\\dessert\\치즈케이크.jpg"));
+		 try {
+	            URL imageUrl = p2.class.getResource("/dessert/치즈 케이크.jpg"); // 리소스 경로 설정
+	            if (imageUrl != null) {
+	                ImageIcon icon = new ImageIcon(imageUrl);
+	                btnNewButton_2_6_1.setIcon(icon);
+	            } else {
+	                System.out.println("이미지를 찾을 수 없습니다!");
+	            }
+       } catch (Exception e) {
+           System.out.println("이미지를 로드하는 중 오류 발생: " + e.getMessage());
+       }
+       btnNewButton_2_6_1.setText("치즈 케이크");
 		btnNewButton_2_6_1.setBounds(29, 33, 120, 120);
 		panel_3.add(btnNewButton_2_6_1);
 		
 		JButton btnNewButton_2_6_2 = new JButton("New button");
-		btnNewButton_2_6_2.setIcon(new ImageIcon("D:\\ncs\\workspace(java)\\Ch20_project\\dessert\\초코케이크.jpg"));
+		 try {
+	            URL imageUrl = p2.class.getResource("/dessert/초코 케이크.jpg"); // 리소스 경로 설정
+	            if (imageUrl != null) {
+	                ImageIcon icon = new ImageIcon(imageUrl);
+	                btnNewButton_2_6_2.setIcon(icon);
+	            } else {
+	                System.out.println("이미지를 찾을 수 없습니다!");
+	            }
+       } catch (Exception e) {
+           System.out.println("이미지를 로드하는 중 오류 발생: " + e.getMessage());
+       }
+       btnNewButton_2_6_2.setText("초코 케이크");
 		btnNewButton_2_6_2.setBounds(183, 33, 120, 120);
 		panel_3.add(btnNewButton_2_6_2);
 		
 		JButton btnNewButton_2_6_3 = new JButton("New button");
-		btnNewButton_2_6_3.setIcon(new ImageIcon("D:\\ncs\\workspace(java)\\Ch20_project\\dessert\\에그타르트.jpg"));
+		 try {
+	            URL imageUrl = p2.class.getResource("/dessert/에그타르트.jpg"); // 리소스 경로 설정
+	            if (imageUrl != null) {
+	                ImageIcon icon = new ImageIcon(imageUrl);
+	                btnNewButton_2_6_3.setIcon(icon);
+	            } else {
+	                System.out.println("이미지를 찾을 수 없습니다!");
+	            }
+       } catch (Exception e) {
+           System.out.println("이미지를 로드하는 중 오류 발생: " + e.getMessage());
+       }
+       btnNewButton_2_6_3.setText("에그타르트");
 		btnNewButton_2_6_3.setBounds(29, 233, 120, 120);
 		panel_3.add(btnNewButton_2_6_3);
 		
 		JButton btnNewButton_2_6_4 = new JButton("New button");
-		btnNewButton_2_6_4.setIcon(new ImageIcon("D:\\ncs\\workspace(java)\\Ch20_project\\dessert\\휘낭시에.jpg"));
+		 try {
+	            URL imageUrl = p2.class.getResource("/dessert/휘낭시에.jpg"); // 리소스 경로 설정
+	            if (imageUrl != null) {
+	                ImageIcon icon = new ImageIcon(imageUrl);
+	                btnNewButton_2_6_4.setIcon(icon);
+	            } else {
+	                System.out.println("이미지를 찾을 수 없습니다!");
+	            }
+       } catch (Exception e) {
+           System.out.println("이미지를 로드하는 중 오류 발생: " + e.getMessage());
+       }
+       btnNewButton_2_6_4.setText("휘낭시에");
 		btnNewButton_2_6_4.setBounds(183, 233, 120, 120);
 		panel_3.add(btnNewButton_2_6_4);
 		
@@ -296,22 +471,66 @@ public class p2 implements ActionListener {
 		panel_4.setLayout(null);
 		
 		JButton btnNewButton_2_6_1_1 = new JButton("New button");
-		btnNewButton_2_6_1_1.setIcon(new ImageIcon("D:\\ncs\\workspace(java)\\Ch20_project\\side\\리코타 치즈 샐러드.jpg"));
+		 try {
+	            URL imageUrl = p2.class.getResource("/side/리코타샐러드.jpg"); // 리소스 경로 설정
+	            if (imageUrl != null) {
+	                ImageIcon icon = new ImageIcon(imageUrl);
+	                btnNewButton_2_6_1_1.setIcon(icon);
+	            } else {
+	                System.out.println("이미지를 찾을 수 없습니다!");
+	            }
+       } catch (Exception e) {
+           System.out.println("이미지를 로드하는 중 오류 발생: " + e.getMessage());
+       }
+       btnNewButton_2_6_1_1.setText("리코타샐러드");
 		btnNewButton_2_6_1_1.setBounds(36, 44, 120, 120);
 		panel_4.add(btnNewButton_2_6_1_1);
 		
 		JButton btnNewButton_2_6_1_2 = new JButton("New button");
-		btnNewButton_2_6_1_2.setIcon(new ImageIcon("D:\\ncs\\workspace(java)\\Ch20_project\\side\\케이준 치킨 샐러드.jpg"));
+		 try {
+	            URL imageUrl = p2.class.getResource("/side/케이준치킨샐러드.jpg"); // 리소스 경로 설정
+	            if (imageUrl != null) {
+	                ImageIcon icon = new ImageIcon(imageUrl);
+	                btnNewButton_2_6_1_2.setIcon(icon);
+	            } else {
+	                System.out.println("이미지를 찾을 수 없습니다!");
+	            }
+       } catch (Exception e) {
+           System.out.println("이미지를 로드하는 중 오류 발생: " + e.getMessage());
+       }
+       btnNewButton_2_6_1_2.setText("케이준치킨샐러드");
 		btnNewButton_2_6_1_2.setBounds(192, 44, 120, 120);
 		panel_4.add(btnNewButton_2_6_1_2);
 		
 		JButton btnNewButton_2_6_1_3 = new JButton("New button");
-		btnNewButton_2_6_1_3.setIcon(new ImageIcon("D:\\ncs\\workspace(java)\\Ch20_project\\side\\양송이 크림스프.jpg"));
+		 try {
+	            URL imageUrl = p2.class.getResource("/side/양송이 크림스프.jpg"); // 리소스 경로 설정
+	            if (imageUrl != null) {
+	                ImageIcon icon = new ImageIcon(imageUrl);
+	                btnNewButton_2_6_1_3.setIcon(icon);
+	            } else {
+	                System.out.println("이미지를 찾을 수 없습니다!");
+	            }
+       } catch (Exception e) {
+           System.out.println("이미지를 로드하는 중 오류 발생: " + e.getMessage());
+       }
+       btnNewButton_2_6_1_3.setText("양송이 크림스프");
 		btnNewButton_2_6_1_3.setBounds(36, 237, 120, 120);
 		panel_4.add(btnNewButton_2_6_1_3);
 		
 		JButton btnNewButton_2_6_1_4 = new JButton("New button");
-		btnNewButton_2_6_1_4.setIcon(new ImageIcon("D:\\ncs\\workspace(java)\\Ch20_project\\side\\감자튀김.jpg"));
+		 try {
+	            URL imageUrl = p2.class.getResource("/side/감자튀김.jpg"); // 리소스 경로 설정
+	            if (imageUrl != null) {
+	                ImageIcon icon = new ImageIcon(imageUrl);
+	                btnNewButton_2_6_1_4.setIcon(icon);
+	            } else {
+	                System.out.println("이미지를 찾을 수 없습니다!");
+	            }
+       } catch (Exception e) {
+           System.out.println("이미지를 로드하는 중 오류 발생: " + e.getMessage());
+       }
+       btnNewButton_2_6_1_4.setText("감자튀김");
 		btnNewButton_2_6_1_4.setBounds(192, 237, 120, 120);
 		panel_4.add(btnNewButton_2_6_1_4);
 		
@@ -343,9 +562,10 @@ public class p2 implements ActionListener {
 		//좌측 그리드 세팅
 		JPanel panel1 = new JPanel();
 		JPanel panel2 = new JPanel();
+		JPanel panel0 = new JPanel();
 		
 		String[] header = 
-			{"상 품 명","단 가","수 량"};
+			{"상 품 명","단 가","수 량","총 액"};
 		
 		model = new DefaultTableModel(header, 0);
 		
@@ -355,6 +575,10 @@ public class p2 implements ActionListener {
 				table, 
 				ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED, 
 				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		
+	
+		
+		
 		
 		String[] header2 = 
 			{"총 금 액","사용 마일리지"};
@@ -369,7 +593,103 @@ public class p2 implements ActionListener {
 				ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED, 
 				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		
-		jsp2.setPreferredSize(new Dimension(445,80));
+		jsp2.setPreferredSize(new Dimension(245,80));
+		
+		
+		
+		
+		
+	    //수량조절
+		JSpinner spinner = new JSpinner(new SpinnerNumberModel(1, 1, 100, 1));
+		spinner.setBounds(588, 369, 42, 69);
+		frame.getContentPane().add(spinner);
+		
+		
+		// 테이블에서 행이 선택될 때, 선택된 상품의 수량을 JSpinner에 업데이트
+		table.getSelectionModel().addListSelectionListener(e -> {
+		    // 선택된 행이 있으면 JSpinner 값 업데이트
+		    int selectedRow = table.getSelectedRow();
+		    if (selectedRow >= 0) {
+		        int quantity = (Integer) model.getValueAt(selectedRow, 2);  // 선택된 행의 수량
+		        spinner.setValue(quantity);  // JSpinner 값 업데이트
+		    }
+		});
+		
+		
+		
+		
+		spinner.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                int selectedRow = table.getSelectedRow();
+                if (selectedRow >= 0) {
+                    int quantity = (Integer) spinner.getValue();
+                    model.setValueAt(quantity, selectedRow, 2);
+
+                    // 총액 계산
+                    Object unitPriceObj = model.getValueAt(selectedRow, 1);
+                    if (unitPriceObj instanceof Number) {
+                        int unitPrice = ((Number) unitPriceObj).intValue();
+                        int totalPrice = unitPrice * quantity;
+                        model.setValueAt(totalPrice, selectedRow, 3);
+                        
+                        
+                    }
+                    updateTotalNum();
+                    
+                    
+                }
+                
+            }
+        });
+		
+		
+		
+		
+		
+		JButton btnNewButton_6 = new JButton("상품삭제");//상품삭제버튼
+		btnNewButton_6.setBounds(630, 369, 85, 69);
+		frame.getContentPane().add(btnNewButton_6);
+		
+		btnNewButton_6.addActionListener(new ActionListener() {
+		    @Override
+		    public void actionPerformed(ActionEvent e) {
+		        int selectedRow = table.getSelectedRow(); // 선택된 행 인덱스
+		        if (selectedRow != -1) {
+		            // JTable에서 행 삭제 전 해당 행의 총액 값 가져오기
+		            Object totalObj = model.getValueAt(selectedRow, 3); // 총액 컬럼 값
+		            if (totalObj instanceof Number) {
+		                int totalValue = ((Number) totalObj).intValue();
+		                totalnum -= totalValue; // 삭제된 상품의 총액만큼 totalnum에서 빼기
+		            }
+
+		            // 모델에서 해당 행 삭제
+		            model.removeRow(selectedRow);
+
+		            // 총액 갱신
+		            updateTotalNum(); // updateTotalNum()을 호출하여 totalnum을 다시 계산
+
+		            // 테이블을 새로 고침
+		            model.fireTableDataChanged(); // model 갱신
+		            model2.fireTableDataChanged(); // model2 갱신
+
+		        } else {
+		            JOptionPane.showMessageDialog(frame, "행을 선택하세요.");
+		        }
+		    }
+		});
+		
+		
+		
+		
+		
+	//	spinner.setSize(new Dimension(40, 80));
+		spinner.setPreferredSize(new Dimension(40, 80));
+		
+		panel0.add(jsp2);
+		panel0.add(spinner);
+		panel0.add(btnNewButton_6);
+		
 		
 		JButton btnNewButton = new JButton("현금결제");
 		btnNewButton.setFont(new Font("나눔고딕", Font.BOLD, 16));
@@ -391,7 +711,7 @@ public class p2 implements ActionListener {
 		panel1.add(btnNewButton_5);
 		
 		panel2.add(jsp,BorderLayout.NORTH);
-		panel2.add(jsp2,BorderLayout.CENTER);
+		panel2.add(panel0,BorderLayout.CENTER);
 		panel2.add(panel1,BorderLayout.SOUTH);
 		
 		frame.getContentPane().add(panel2);
@@ -406,13 +726,57 @@ public class p2 implements ActionListener {
 			}
 		});
 		
-		//버튼에 이벤스 리스너 세팅
+		//버튼에 이벤스 리스너 세팅(커피)
 		btnNewButton_3.addActionListener(this);
 		btnNewButton_4.addActionListener(this);
 		btnNewButton_2.addActionListener(this);
 		btnNewButton_2_1.addActionListener(this);
 		
+		//버튼에 이벤스 리스너 세팅(파스타)
+		btnNewButton_2_2.addActionListener(this);
+		btnNewButton_2_3.addActionListener(this);
+		btnNewButton_2_4.addActionListener(this);
+		btnNewButton_2_5.addActionListener(this);
 		
+		//버튼에 이벤스 리스너 세팅(음료)
+		btnNewButton_2_6.addActionListener(this);
+		btnNewButton_2_7.addActionListener(this);
+		btnNewButton_2_8.addActionListener(this);
+		btnNewButton_2_9.addActionListener(this);
+		
+		//버튼에 이벤스 리스너 세팅(디저트)
+		btnNewButton_2_6_1.addActionListener(this);
+		btnNewButton_2_6_2.addActionListener(this);
+		btnNewButton_2_6_3.addActionListener(this);
+		btnNewButton_2_6_4.addActionListener(this);
+				
+		//버튼에 이벤스 리스너 세팅(사이드)
+		btnNewButton_2_6_1_1.addActionListener(this);
+		btnNewButton_2_6_1_2.addActionListener(this);
+		btnNewButton_2_6_1_3.addActionListener(this);
+		btnNewButton_2_6_1_4.addActionListener(this);
+				
+		
+		
+		
+		
+		
+	}
+	
+	
+	
+	private int calculateTotalAmount(DefaultTableModel model3) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	private void updateTotal() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	protected void updateTotalPrice(DefaultTableModel model3, int selectedRow) {
+		// TODO Auto-generated method stub
 		
 	}
 
@@ -460,9 +824,14 @@ public class p2 implements ActionListener {
 			}
 		}  // connect() 메서드 end
 		
+		private int totalnum = 0;
+		
+		
 		
 		// EMP 테이블의 전체 사원 목록을 조회하는 메서드.
 		void select(String name) {
+			
+			;
 			
 			try {
 				// 1. 오라클 데이터베이스로 전송할 SQL문 작성.
@@ -474,16 +843,39 @@ public class p2 implements ActionListener {
 				// 2. 오라클 데이터베이스에 SQL문 전송 및 SQL문 실행.
 				rs = pstmt.executeQuery();
 				
+				
+				
 				while(rs.next()) {
 					String pro_name  = rs.getString("pro_name");
 					int pro_price  = rs.getInt("pro_price");
+					int quantity = 1;
+					int total = pro_price * quantity;
+					
+					
+					totalnum += total;
+					
 					
 					Object[] data = 
-						{pro_name, pro_price, 1};
+						{pro_name, pro_price, quantity, total};
 					
 					// 저장된 한 개의 레코드(데이터)를 model에 추가해 주면 됨.
 					model.addRow(data);
+					
+					
 				}
+				
+				// 디버깅 로그 추가
+		        System.out.println("Data added to model. Rows: " + model.getRowCount());
+				
+				updateTotalNum();
+				
+				SwingUtilities.invokeLater(() -> {
+				    table2.invalidate();
+				    table2.validate();
+				    table2.repaint();
+				});
+						
+				
 				
 				// 3. 오라클 데이터베이스에 연결되어 있던 자원 종료
 				rs.close(); pstmt.close(); con.close();
@@ -494,11 +886,37 @@ public class p2 implements ActionListener {
 			}
 			
 		}  // select() 메서드 end
+		
+		private void updateTotalNum() {
+		    totalnum = 0;  // 총합 초기화
+		    for (int i = 0; i < model.getRowCount(); i++) {
+		        Object totalObj = model.getValueAt(i, 3);
+		        if (totalObj instanceof Number) {
+		            totalnum += ((Number) totalObj).intValue();
+		        }
+		    }
+		    
+		 // 기존 모델 데이터를 완전히 교체
+		    DefaultTableModel newModel2 = new DefaultTableModel(
+		        new String[] {"총 금 액", "사용 마일리지"}, 0);
+		    newModel2.addRow(new Object[] {totalnum}); // 총합 추가
+
+		    table2.setModel(newModel2); // 테이블에 새 모델 설정
+		    
+		    
+		    
+		 
+		 
+		}
+		
+		
+		
+
+		
+		
 	}
+
+
 	
 
 	
-
-
-
-

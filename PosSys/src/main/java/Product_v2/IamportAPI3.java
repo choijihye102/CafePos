@@ -80,9 +80,9 @@ public class IamportAPI3 {
 		    
 		    }*/
 	 }
-	 public String PayCard( int amount, String cardNumber,  String expiry,  String birth, String no) {
+	 public Integer PayCard( int amount, String cardNumber,  String expiry,  String birth, String no) {
 		   String merchantUid2 = "store-e5914df3-46b4-406e-8e4a-6354f508fc34";
-	        String merchantUid = "nice_v2.iamport01m"; // 상점 고유 번호
+	       String merchantUid = "nice_v2.iamport01m"; // 상점 고유 번호
 	    //    int amount = 200; // 결제 금액
 	    //    String cardNumber = "5188310032356509"; // 카드 번호
 	    //    String expiry = "2027-07"; // 카드 유효기간
@@ -140,8 +140,11 @@ public class IamportAPI3 {
 	                    String merchantUidResponse = responseData.optString("merchant_uid");
 	                    System.out.println("imp_uid: " + impUid);
 	                    System.out.println("merchant_uid: " + merchantUidResponse);
+	                    return 0;
 	                } else {
+	                	
 	                    System.out.println("No response data available.");
+	                    return 1;
 	                }
 	            } else {
 	                System.out.println("Empty response body.");
@@ -149,10 +152,8 @@ public class IamportAPI3 {
 	        } catch (Exception e) {
 	            e.printStackTrace();
 	        }
+			return null;
 	        
-	        if(statusCode == 200) {
-	        	return amount+"원 결제 완료되었습니다.";
-	        }
-	        	return amount+"원 결제 실패하였습니다.";
+	     
 	    }
 	}

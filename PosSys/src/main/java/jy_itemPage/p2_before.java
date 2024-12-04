@@ -12,7 +12,7 @@ import javax.swing.*;
 import javax.swing.table.*;
 
 
-public class p2 implements ActionListener {
+public class p2_before implements ActionListener {
 	Connection con = null;                  // DB와 연결하는 객체
 	PreparedStatement pstmt = null;         // SQL문을 DB에 전송하는 객체
 	ResultSet rs = null;                    // SQL문 실행 결과를 가지고 있는 객체
@@ -34,7 +34,7 @@ public class p2 implements ActionListener {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					p2 window = new p2();
+					p2_before window = new p2_before();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -46,7 +46,7 @@ public class p2 implements ActionListener {
 	/**
 	 * Create the application.
 	 */
-	public p2() {
+	public p2_before() {
 		initialize();
 	}
 

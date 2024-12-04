@@ -26,7 +26,7 @@ public class SelectOrder_View2 implements ActionListener {
 	DefaultTableModel model2;
 	JTable table2;
 
-	JFrame frame;
+	public JFrame frame;
 	JTextArea textArea;
 
 	JComboBox jcb1;

@@ -1,21 +1,29 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>PosSys</groupId>
-  <artifactId>PosSys</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <dependencies>
-    <!-- org.json dependency -->
-    <dependency>
-      <groupId>org.json</groupId>
-      <artifactId>json</artifactId>
-      <version>20210307</version>  <!-- 최신 버전으로 사용하세요 -->
-    </dependency>
- 
-    <dependency>
-    <groupId>com.konghq</groupId>
-    <artifactId>unirest-java</artifactId>
-    <version>3.13.6</version>
-   </dependency>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>PosSys</groupId>
+	<artifactId>PosSys</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<dependencies>
+		<!-- org.json dependency -->
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20210307</version>  <!-- 최신 버전으로 사용하세요 -->
+		</dependency>
 
-  </dependencies>
+		<dependency>
+			<groupId>com.konghq</groupId>
+			<artifactId>unirest-java</artifactId>
+			<version>3.13.6</version>
+		</dependency>
+
+		<!-- 날짜 -->
+		<dependency>
+			<groupId>com.toedter</groupId>
+			<artifactId>jcalendar</artifactId>
+			<version>1.4</version>
+		</dependency>
+	</dependencies>
 </project>
