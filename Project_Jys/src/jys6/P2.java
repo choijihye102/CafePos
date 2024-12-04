@@ -442,27 +442,22 @@ public class P2 implements ActionListener {
 				}
 			}
 
-			// 고객 전화번호 저장
-			cus_phon = inputCusPhon;
+			cus_phon = inputCusPhon;	// 고객 전화번호 저장
 
-			// 현재 마일리지 확인
-			int currentMileage = dao.getCus_point(cus_phon);
+			int currentMileage = dao.getCus_point(cus_phon);	// 현재 마일리지 확인
 			JOptionPane.showMessageDialog(frame, "현재 마일리지: " + currentMileage + "점");
 
-			// 총 금액 업데이트
 			updateTotalNum(); // totalPrice 값 계산
 
-			// 디버깅 로그 추가
-			System.out.println("총 금액: " + totalPrice + ", 현재 마일리지: " + currentMileage);
+			System.out.println("총 금액: " + totalPrice + ", 현재 마일리지: " + currentMileage);		// 디버깅 로그 추가
 
-			// 마일리지 사용 여부 묻기
-			int useMileageOption = JOptionPane.showConfirmDialog(frame, "마일리지를 사용하시겠습니까?", "마일리지 사용",
+			int useMileageOption = JOptionPane.showConfirmDialog(frame,		// 마일리지 사용 여부 묻기
+					"마일리지를 사용하시겠습니까?", "마일리지 사용",
 					JOptionPane.YES_NO_OPTION);
 
 			if (useMileageOption == JOptionPane.YES_OPTION) {
 				String mileageInput = JOptionPane.showInputDialog(frame,
 						"사용할 마일리지 점수를 입력하세요 (최대 " + currentMileage + "점):");
-
 				try {
 					int requestedMileage = Integer.parseInt(mileageInput);
 
