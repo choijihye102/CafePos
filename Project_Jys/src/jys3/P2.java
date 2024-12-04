@@ -74,122 +74,52 @@ public class P2 implements ActionListener {
 		panel.setBackground(Color.WHITE);
 		tabbedPane.addTab("커피", null, panel, null);
 		panel.setLayout(null);
-
+		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(Color.WHITE);
 		tabbedPane.addTab("파스타", null, panel_1, null);
 		panel_1.setLayout(null);
-		
-		JTextPane textPane_3 = new JTextPane();
-		textPane_3.setText("    토마토 파스타\r\n        7,000원");
-		textPane_3.setFont(new Font("굴림", Font.BOLD, 12));
-		textPane_3.setBounds(29, 171, 120, 42);
-		panel_1.add(textPane_3);
-		
-		JTextPane textPane_4 = new JTextPane();
-		textPane_4.setText("     라구 파스타\r\n        8,500원");
-		textPane_4.setFont(new Font("굴림", Font.BOLD, 12));
-		textPane_4.setBounds(186, 171, 120, 42);
-		panel_1.add(textPane_4);
-		
-		JTextPane textPane_5 = new JTextPane();
-		textPane_5.setText("  바질페스토 파스타\r\n        8,000원");
-		textPane_5.setFont(new Font("굴림", Font.BOLD, 12));
-		textPane_5.setBounds(29, 395, 120, 42);
-		panel_1.add(textPane_5);
-		
-		JTextPane textPane_6 = new JTextPane();
-		textPane_6.setText("     알리오올리오\r\n         8,500원");
-		textPane_6.setFont(new Font("굴림", Font.BOLD, 12));
-		textPane_6.setBounds(186, 395, 120, 42);
-		panel_1.add(textPane_6);
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setBackground(Color.WHITE);
 		tabbedPane.addTab("음료", null, panel_2, null);
 		panel_2.setLayout(null);
 		
-		JTextPane textPane_3_1 = new JTextPane();
-		textPane_3_1.setText("     레몬 에이드\r\n        4,000원");
-		textPane_3_1.setFont(new Font("굴림", Font.BOLD, 12));
-		textPane_3_1.setBounds(34, 165, 120, 42);
-		panel_2.add(textPane_3_1);
-		
-		JTextPane textPane_3_2 = new JTextPane();
-		textPane_3_2.setText("    블루 에이드\r\n        4,000원");
-		textPane_3_2.setFont(new Font("굴림", Font.BOLD, 12));
-		textPane_3_2.setBounds(193, 165, 120, 42);
-		panel_2.add(textPane_3_2);
-		
-		JTextPane textPane_3_3 = new JTextPane();
-		textPane_3_3.setText("        사이다\r\n        2,000원");
-		textPane_3_3.setFont(new Font("굴림", Font.BOLD, 12));
-		textPane_3_3.setBounds(34, 355, 120, 42);
-		panel_2.add(textPane_3_3);
-		
-		JTextPane textPane_3_4 = new JTextPane();
-		textPane_3_4.setText("          콜라\r\n        2,000원");
-		textPane_3_4.setFont(new Font("굴림", Font.BOLD, 12));
-		textPane_3_4.setBounds(193, 355, 120, 42);
-		panel_2.add(textPane_3_4);
-		
 		JPanel panel_3 = new JPanel();
 		panel_3.setBackground(Color.WHITE);
 		tabbedPane.addTab("디저트", null, panel_3, null);
 		panel_3.setLayout(null);
 		
-		JTextPane textPane_3_1_2 = new JTextPane();
-		textPane_3_1_2.setText("     초코 케이크\r\n        4,000원");
-		textPane_3_1_2.setFont(new Font("굴림", Font.BOLD, 12));
-		textPane_3_1_2.setBounds(183, 163, 120, 42);
-		panel_3.add(textPane_3_1_2);
-		
-		JTextPane textPane_3_1_3 = new JTextPane();
-		textPane_3_1_3.setText("     에그 타르트\r\n        2,500원");
-		textPane_3_1_3.setFont(new Font("굴림", Font.BOLD, 12));
-		textPane_3_1_3.setBounds(29, 363, 120, 42);
-		panel_3.add(textPane_3_1_3);
-		
-		JTextPane textPane_3_1_4 = new JTextPane();
-		textPane_3_1_4.setText("      휘낭시에\r\n        2,000원");
-		textPane_3_1_4.setFont(new Font("굴림", Font.BOLD, 12));
-		textPane_3_1_4.setBounds(183, 363, 120, 42);
-		panel_3.add(textPane_3_1_4);
-		
-		JTextPane textPane_3_1_2_1 = new JTextPane();
-		textPane_3_1_2_1.setText("     치즈 케이크\r\n        4,000원");
-		textPane_3_1_2_1.setFont(new Font("굴림", Font.BOLD, 12));
-		textPane_3_1_2_1.setBounds(29, 163, 120, 42);
-		panel_3.add(textPane_3_1_2_1);
-		
 		JPanel panel_4 = new JPanel();
 		panel_4.setBackground(new Color(240, 255, 255));
 		tabbedPane.addTab("사이드", null, panel_4, null);
 		panel_4.setLayout(null);
-				
-		JTextPane textPane_3_1_2_2 = new JTextPane();
-		textPane_3_1_2_2.setText("      리코타샐러드\r\n          8,000원");
-		textPane_3_1_2_2.setFont(new Font("굴림", Font.BOLD, 12));
-		textPane_3_1_2_2.setBounds(36, 174, 120, 42);
-		panel_4.add(textPane_3_1_2_2);
 		
-		JTextPane textPane_3_1_2_3 = new JTextPane();
-		textPane_3_1_2_3.setText("     케이준치킨샐러드\r\n          9,000원");
-		textPane_3_1_2_3.setFont(new Font("굴림", Font.BOLD, 12));
-		textPane_3_1_2_3.setBounds(179, 174, 140, 42);
-		panel_4.add(textPane_3_1_2_3);
+		addTextPane(panel, "  아이스 아메리카노\r\n        2,500원", 12, 182, 120, 42);
+		addTextPane(panel, "    바닐라 라떼\r\n       3,500원", 176, 182, 120, 42);
+		addTextPane(panel, "       카페라떼\r\n        3,500원", 12, 385, 120, 42);
+		addTextPane(panel, "   카라멜 마끼아또\r\n        4,000원", 176, 385, 120, 42);
 		
-		JTextPane textPane_3_1_2_4 = new JTextPane();
-		textPane_3_1_2_4.setText("     양송이 크림스프\r\n         4,000원");
-		textPane_3_1_2_4.setFont(new Font("굴림", Font.BOLD, 12));
-		textPane_3_1_2_4.setBounds(36, 367, 120, 42);
-		panel_4.add(textPane_3_1_2_4);
+		addTextPane(panel_1, "    토마토 파스타\r\n        7,000원", 29, 171, 120, 42);
+		addTextPane(panel_1, "     라구 파스타\r\n        8,500원", 186, 171, 120, 42);
+		addTextPane(panel_1, "  바질페스토 파스타\r\n        8,000원", 29, 395, 120, 42);
+		addTextPane(panel_1, "     알리오올리오\r\n         8,500원", 186, 395, 120, 42);
 		
-		JTextPane textPane_3_1_2_5 = new JTextPane();
-		textPane_3_1_2_5.setText("       감자튀김\r\n        2,500원");
-		textPane_3_1_2_5.setFont(new Font("굴림", Font.BOLD, 12));
-		textPane_3_1_2_5.setBounds(192, 367, 120, 42);
-		panel_4.add(textPane_3_1_2_5);
+		addTextPane(panel_2, "     레몬 에이드\r\n        4,000원", 34, 165, 120, 42);
+		addTextPane(panel_2, "    블루 에이드\r\n        4,000원", 193, 165, 120, 42);
+		addTextPane(panel_2, "        사이다\r\n        2,000원", 34, 355, 120, 42);
+		addTextPane(panel_2, "         콜라\r\n        2,000원", 193, 355, 120, 42);
+		
+		addTextPane(panel_3, "     초코 케이크\r\n        4,000원", 183, 163, 120, 42);
+		addTextPane(panel_3, "     에그 타르트\r\n        2,500원", 29, 363, 120, 42);
+		addTextPane(panel_3, "      휘낭시에\r\n        2,000원", 183, 363, 120, 42);
+		addTextPane(panel_3, "     치즈 케이크\r\n        4,000원", 29, 163, 120, 42);
+		
+		addTextPane(panel_4, "      리코타샐러드\r\n          8,000원", 36, 174, 120, 42);
+		addTextPane(panel_4, "     케이준치킨샐러드\r\n          9,000원", 179, 174, 120, 42);
+		addTextPane(panel_4, "     양송이 크림스프\r\n         4,000원", 36, 367, 120, 42);
+		addTextPane(panel_4, "       감자튀김\r\n        2,500원원", 192, 367, 120, 42);
+		
 
 		JPanel panel1 = new JPanel();	//좌측 그리드 세팅
 		JPanel panel2 = new JPanel();
@@ -254,8 +184,8 @@ public class P2 implements ActionListener {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
 		        int selectedRow = table.getSelectedRow(); // 선택된 행 인덱스
-		        if (selectedRow != -1) {
-		            // JTable에서 행 삭제 전 해당 행의 총액 값 가져오기
+		        if (selectedRow != -1) {	// JTable에서 행 삭제 전 해당 행의 총액 값 가져오기
+		            
 		            Object totalObj = model.getValueAt(selectedRow, 3); // 총액 컬럼 값
 		            if (totalObj instanceof Number) {
 		                int totalValue = ((Number) totalObj).intValue();
@@ -369,7 +299,6 @@ public class P2 implements ActionListener {
 		    if (con == null) {
 		        connect(); // 연결이 없으면 새로 연결 설정
 		    }
-
 		    try {
 		        
 		        sql = "SELECT * FROM product WHERE pro_name = ? ORDER BY pro_type";		// 1. SQL 작성
@@ -391,11 +320,9 @@ public class P2 implements ActionListener {
 		            model.addRow(data);
 		        }
 
-		        // 디버깅 로그
-		        System.out.println("Data added to model. Rows: " + model.getRowCount());
+		        System.out.println("Data added to model. Rows: " + model.getRowCount());	// 디버깅 로그
 
-		        // UI 업데이트
-		        updateTotalNum();
+		        updateTotalNum();	// UI 업데이트
 
 		        SwingUtilities.invokeLater(() -> {
 		            table2.invalidate();
@@ -427,13 +354,11 @@ public class P2 implements ActionListener {
 		            totalnum += ((Number) totalObj).intValue();
 		        }
 		    }
-		    
 		    DefaultTableModel newModel2 = new DefaultTableModel(	// 기존 모델 데이터를 완전히 교체
 		        new String[] {"총 금 액", "사용 마일리지"}, 0);
 		    newModel2.addRow(new Object[] {totalnum}); // 총합 추가
 
 		    table2.setModel(newModel2); // 테이블에 새 모델 설정
-		    
 		}
 		
 		private void createButton(JPanel panel, String text, String imagePath, int x, int y, int width, int height) {
@@ -454,15 +379,24 @@ public class P2 implements ActionListener {
 		    button.setText(text);
 		    button.setBounds(x, y, width, height);
 		    
-		    // 버튼 동작 추가 (예: 콘솔 출력)
-		    button.addActionListener(e -> {
-		        System.out.println(text + " 버튼이 클릭되었습니다!");
-		        // 원하는 동작 추가
+		    button.addActionListener(e -> {		 // 버튼 동작 추가 (예: 콘솔 출력)
+		        System.out.println(text + " 버튼이 클릭되었습니다!");		// 원하는 동작 추가
 		        select(text); // 예: 상품명 기반으로 데이터 조회
 		    });
-		    
 		    panel.add(button); // 생성된 버튼을 패널에 추가
 		}	// 여기에 메서드 추가.
+		
+		private void addTextPane(JPanel panel, String text, int x, int y, int width, int height) {
+		    JTextPane textPane = new JTextPane();
+		    textPane.setBackground(Color.WHITE);
+		    textPane.setFont(new Font("굴림", Font.BOLD, 12));
+		    textPane.setText(text);
+		    textPane.setBounds(x, y, width, height);
+		    panel.add(textPane);
+		}
+
+		
+		
 	}
 
 
