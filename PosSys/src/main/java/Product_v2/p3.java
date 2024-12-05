@@ -39,7 +39,11 @@ public class p3 implements ActionListener {
 	CustomerDTO cusDTO = new CustomerDTO();
 	OrdersDTO orderDTO = new OrdersDTO();
 	MiroticDTO miroticDTO = new MiroticDTO();
+	CardDTO cardDTO = new CardDTO();
 
+	//Pay_Card_View pay = new Pay_Card_View();
+	
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -65,22 +69,105 @@ public class p3 implements ActionListener {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setTitle("메뉴판");
-		frame.setBounds(100, 100, 743, 567);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setVisible(true);
-		frame.getContentPane().setLayout(new GridLayout(1, 0));
+	    frame = new JFrame();
+	    frame.setTitle("메뉴판");
+	    frame.setBounds(100, 100, 980, 630);
+	    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	    frame.setVisible(true);
+	    frame.getContentPane().setLayout(new GridLayout(1, 0));
 
-		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setBounds(0, 0, 349, 528);
-		frame.getContentPane().add(tabbedPane);
+	    JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+	    frame.getContentPane().add(tabbedPane);
 
-		JPanel panel = new JPanel();
-		panel.setBackground(Color.WHITE);
-		tabbedPane.addTab("커피", null, panel, null);
-		panel.setLayout(null);
+	    // 첫 번째 탭: 커피
+	    JPanel panel = new JPanel() {
+	        @Override
+	        protected void paintComponent(Graphics g) {
+	            super.paintComponent(g);
+	            try {
+	                ImageIcon icon = new ImageIcon(getClass().getResource("/coffee/커피배경.png"));
+	                Image img = icon.getImage();
+	                g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
+	            } catch (Exception e) {
+	                System.out.println("이미지를 로드할 수 없습니다: " + e.getMessage());
+	            }
+	        }
+	    };
+	    panel.setBackground(Color.WHITE);
+	    tabbedPane.addTab("커피", null, panel, null);
 
+	    // 두 번째 탭: 파스타
+	    JPanel panel_1 = new JPanel() {
+	        @Override
+	        protected void paintComponent(Graphics g) {
+	            super.paintComponent(g);
+	            try {
+	                ImageIcon icon = new ImageIcon(getClass().getResource("/pasta/파스타배경.png"));
+	                Image img = icon.getImage();
+	                g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
+	            } catch (Exception e) {
+	                System.out.println("이미지를 로드할 수 없습니다: " + e.getMessage());
+	            }
+	        }
+	    };
+	    panel_1.setBackground(Color.WHITE);
+	    tabbedPane.addTab("파스타", null, panel_1, null);
+
+	    // 세 번째 탭: 음료
+	    JPanel panel_2 = new JPanel() {
+	        @Override
+	        protected void paintComponent(Graphics g) {
+	            super.paintComponent(g);
+	            try {
+	                ImageIcon icon = new ImageIcon(getClass().getResource("/drink/음료배경.png"));
+	                Image img = icon.getImage();
+	                g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
+	            } catch (Exception e) {
+	                System.out.println("이미지를 로드할 수 없습니다: " + e.getMessage());
+	            }
+	        }
+	    };
+	    panel_2.setBackground(Color.WHITE);
+	    tabbedPane.addTab("음료", null, panel_2, null);
+
+	    // 네 번째 탭: 디저트
+	    JPanel panel_3 = new JPanel() {
+	        @Override
+	        protected void paintComponent(Graphics g) {
+	            super.paintComponent(g);
+	            try {
+	                ImageIcon icon = new ImageIcon(getClass().getResource("/dessert/디저트배경.png"));
+	                Image img = icon.getImage();
+	                g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
+	            } catch (Exception e) {
+	                System.out.println("이미지를 로드할 수 없습니다: " + e.getMessage());
+	            }
+	        }
+	    };
+	    panel_3.setBackground(Color.WHITE);
+	    tabbedPane.addTab("디저트", null, panel_3, null);
+
+	    // 다섯 번째 탭: 추가 탭 (예시)
+	    JPanel panel_4 = new JPanel() {
+	        @Override
+	        protected void paintComponent(Graphics g) {
+	            super.paintComponent(g);
+	            try {
+	                ImageIcon icon = new ImageIcon(getClass().getResource("/side/사이드배경.png"));
+	                Image img = icon.getImage();
+	                g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
+	            } catch (Exception e) {
+	                System.out.println("이미지를 로드할 수 없습니다: " + e.getMessage());
+	            }
+	        }
+	    };
+	    panel_4.setBackground(Color.WHITE);
+	    tabbedPane.addTab("사이드", null, panel_4, null);
+	    
+	    panel.setBackground(Color.WHITE);
+	    tabbedPane.addTab("커피", null, panel, null);
+	    panel.setLayout(null);
+		
 		// 라떼 동적으로 올리기.(시작 부분)
 		JButton btnNewButton_3 = new JButton("New button");
 		try {
@@ -97,7 +184,7 @@ public class p3 implements ActionListener {
 		btnNewButton_3.setText("카페라떼");
 		// 라떼 동적으로 올리기. (끝 부분)
 
-		btnNewButton_3.setBounds(12, 255, 120, 120);
+		btnNewButton_3.setBounds(70, 300, 120, 120);
 		panel.add(btnNewButton_3);
 
 		JButton btnNewButton_4 = new JButton("New button");
@@ -114,7 +201,7 @@ public class p3 implements ActionListener {
 		}
 		btnNewButton_4.setText("카라멜 마끼아또");
 
-		btnNewButton_4.setBounds(176, 255, 120, 120);
+		btnNewButton_4.setBounds(280, 300, 120, 120);
 		panel.add(btnNewButton_4);
 
 		JButton btnNewButton_2 = new JButton("New button");
@@ -131,7 +218,7 @@ public class p3 implements ActionListener {
 		}
 		btnNewButton_2.setText("아이스 아메리카노");
 
-		btnNewButton_2.setBounds(12, 52, 120, 120);
+		btnNewButton_2.setBounds(70, 130, 120, 120);
 		panel.add(btnNewButton_2);
 
 		JButton btnNewButton_2_1 = new JButton("New button");
@@ -148,35 +235,34 @@ public class p3 implements ActionListener {
 		}
 		btnNewButton_2_1.setText("바닐라 라떼");
 
-		btnNewButton_2_1.setBounds(176, 52, 120, 120);
+		btnNewButton_2_1.setBounds(280, 130, 120, 120);
 		panel.add(btnNewButton_2_1);
 
 		JTextPane textPane = new JTextPane();
 		textPane.setBackground(Color.WHITE);
 		textPane.setFont(new Font("굴림", Font.BOLD, 12));
 		textPane.setText("  아이스 아메리카노\r\n        2,500원");
-		textPane.setBounds(12, 182, 120, 42);
+		textPane.setBounds(70, 250, 120, 42);
 		panel.add(textPane);
 
 		JTextPane textPane_1 = new JTextPane();
 		textPane_1.setText("    바닐라 라떼\r\n       3,500원");
 		textPane_1.setFont(new Font("굴림", Font.BOLD, 12));
-		textPane_1.setBounds(176, 182, 120, 42);
+		textPane_1.setBounds(280, 250, 120, 42);
 		panel.add(textPane_1);
 
 		JTextPane textPane_2 = new JTextPane();
 		textPane_2.setText("       카페라떼\r\n        3,500원");
 		textPane_2.setFont(new Font("굴림", Font.BOLD, 12));
-		textPane_2.setBounds(12, 385, 120, 42);
+		textPane_2.setBounds(70, 420, 120, 42);
 		panel.add(textPane_2);
 
 		JTextPane textPane_2_1 = new JTextPane();
 		textPane_2_1.setText("   카라멜 마끼아또\r\n        4,000원");
 		textPane_2_1.setFont(new Font("굴림", Font.BOLD, 12));
-		textPane_2_1.setBounds(176, 385, 120, 42);
+		textPane_2_1.setBounds(280, 420, 120, 42);
 		panel.add(textPane_2_1);
-
-		JPanel panel_1 = new JPanel();
+		
 		panel_1.setBackground(Color.WHITE);
 		tabbedPane.addTab("파스타", null, panel_1, null);
 		panel_1.setLayout(null);
@@ -194,7 +280,7 @@ public class p3 implements ActionListener {
 			System.out.println("이미지를 로드하는 중 오류 발생: " + e.getMessage());
 		}
 		btnNewButton_2_2.setText("토마토 파스타");
-		btnNewButton_2_2.setBounds(29, 41, 120, 120);
+		btnNewButton_2_2.setBounds(70, 130, 120, 120);
 		panel_1.add(btnNewButton_2_2);
 
 		JButton btnNewButton_2_3 = new JButton("New button");
@@ -210,7 +296,7 @@ public class p3 implements ActionListener {
 			System.out.println("이미지를 로드하는 중 오류 발생: " + e.getMessage());
 		}
 		btnNewButton_2_3.setText("라구 파스타");
-		btnNewButton_2_3.setBounds(186, 41, 120, 120);
+		btnNewButton_2_3.setBounds(280, 130, 120, 120);
 		panel_1.add(btnNewButton_2_3);
 
 		JButton btnNewButton_2_4 = new JButton("New button");
@@ -226,7 +312,7 @@ public class p3 implements ActionListener {
 			System.out.println("이미지를 로드하는 중 오류 발생: " + e.getMessage());
 		}
 		btnNewButton_2_4.setText("바질페스토 파스타");
-		btnNewButton_2_4.setBounds(29, 265, 120, 120);
+		btnNewButton_2_4.setBounds(70, 300, 120, 120);
 		panel_1.add(btnNewButton_2_4);
 
 		JButton btnNewButton_2_5 = new JButton("New button");
@@ -242,34 +328,34 @@ public class p3 implements ActionListener {
 			System.out.println("이미지를 로드하는 중 오류 발생: " + e.getMessage());
 		}
 		btnNewButton_2_5.setText("알리오올리오");
-		btnNewButton_2_5.setBounds(186, 265, 120, 120);
+		btnNewButton_2_5.setBounds(280, 300, 120, 120);
 		panel_1.add(btnNewButton_2_5);
 
 		JTextPane textPane_3 = new JTextPane();
 		textPane_3.setText("    토마토 파스타\r\n        7,000원");
 		textPane_3.setFont(new Font("굴림", Font.BOLD, 12));
-		textPane_3.setBounds(29, 171, 120, 42);
+		textPane_3.setBounds(70, 250, 120, 42);
 		panel_1.add(textPane_3);
 
 		JTextPane textPane_4 = new JTextPane();
 		textPane_4.setText("     라구 파스타\r\n        8,500원");
 		textPane_4.setFont(new Font("굴림", Font.BOLD, 12));
-		textPane_4.setBounds(186, 171, 120, 42);
+		textPane_4.setBounds(280, 250, 120, 42);
 		panel_1.add(textPane_4);
 
 		JTextPane textPane_5 = new JTextPane();
 		textPane_5.setText("  바질페스토 파스타\r\n        8,000원");
 		textPane_5.setFont(new Font("굴림", Font.BOLD, 12));
-		textPane_5.setBounds(29, 395, 120, 42);
+		textPane_5.setBounds(70, 420, 120, 42);
 		panel_1.add(textPane_5);
 
 		JTextPane textPane_6 = new JTextPane();
 		textPane_6.setText("     알리오올리오\r\n         8,500원");
 		textPane_6.setFont(new Font("굴림", Font.BOLD, 12));
-		textPane_6.setBounds(186, 395, 120, 42);
+		textPane_6.setBounds(280, 420, 120, 42);
 		panel_1.add(textPane_6);
 
-		JPanel panel_2 = new JPanel();
+		
 		panel_2.setBackground(Color.WHITE);
 		tabbedPane.addTab("음료", null, panel_2, null);
 		panel_2.setLayout(null);
@@ -287,7 +373,7 @@ public class p3 implements ActionListener {
 			System.out.println("이미지를 로드하는 중 오류 발생: " + e.getMessage());
 		}
 		btnNewButton_2_6.setText("레몬에이드");
-		btnNewButton_2_6.setBounds(34, 35, 120, 120);
+		btnNewButton_2_6.setBounds(70, 130, 120, 120);
 		panel_2.add(btnNewButton_2_6);
 
 		JButton btnNewButton_2_7 = new JButton("New button");
@@ -303,7 +389,7 @@ public class p3 implements ActionListener {
 			System.out.println("이미지를 로드하는 중 오류 발생: " + e.getMessage());
 		}
 		btnNewButton_2_7.setText("블루에이드");
-		btnNewButton_2_7.setBounds(193, 35, 120, 120);
+		btnNewButton_2_7.setBounds(280, 130, 120, 120);
 		panel_2.add(btnNewButton_2_7);
 
 		JButton btnNewButton_2_8 = new JButton("New button");
@@ -319,7 +405,7 @@ public class p3 implements ActionListener {
 			System.out.println("이미지를 로드하는 중 오류 발생: " + e.getMessage());
 		}
 		btnNewButton_2_8.setText("사이다");
-		btnNewButton_2_8.setBounds(34, 225, 120, 120);
+		btnNewButton_2_8.setBounds(70, 300, 120, 120);
 		panel_2.add(btnNewButton_2_8);
 
 		JButton btnNewButton_2_9 = new JButton("New button");
@@ -335,34 +421,34 @@ public class p3 implements ActionListener {
 			System.out.println("이미지를 로드하는 중 오류 발생: " + e.getMessage());
 		}
 		btnNewButton_2_9.setText("콜라");
-		btnNewButton_2_9.setBounds(193, 225, 120, 120);
+		btnNewButton_2_9.setBounds(280, 300, 120, 120);
 		panel_2.add(btnNewButton_2_9);
 
 		JTextPane textPane_3_1 = new JTextPane();
 		textPane_3_1.setText("     레몬 에이드\r\n        4,000원");
 		textPane_3_1.setFont(new Font("굴림", Font.BOLD, 12));
-		textPane_3_1.setBounds(34, 165, 120, 42);
+		textPane_3_1.setBounds(70, 250, 120, 42);
 		panel_2.add(textPane_3_1);
 
 		JTextPane textPane_3_2 = new JTextPane();
 		textPane_3_2.setText("    블루 에이드\r\n        4,000원");
 		textPane_3_2.setFont(new Font("굴림", Font.BOLD, 12));
-		textPane_3_2.setBounds(193, 165, 120, 42);
+		textPane_3_2.setBounds(280, 250, 120, 42);
 		panel_2.add(textPane_3_2);
 
 		JTextPane textPane_3_3 = new JTextPane();
 		textPane_3_3.setText("        사이다\r\n        2,000원");
 		textPane_3_3.setFont(new Font("굴림", Font.BOLD, 12));
-		textPane_3_3.setBounds(34, 355, 120, 42);
+		textPane_3_3.setBounds(70, 420, 120, 42);
 		panel_2.add(textPane_3_3);
 
 		JTextPane textPane_3_4 = new JTextPane();
 		textPane_3_4.setText("          콜라\r\n        2,000원");
 		textPane_3_4.setFont(new Font("굴림", Font.BOLD, 12));
-		textPane_3_4.setBounds(193, 355, 120, 42);
+		textPane_3_4.setBounds(280, 420, 120, 42);
 		panel_2.add(textPane_3_4);
 
-		JPanel panel_3 = new JPanel();
+		
 		panel_3.setBackground(Color.WHITE);
 		tabbedPane.addTab("디저트", null, panel_3, null);
 		panel_3.setLayout(null);
@@ -380,7 +466,7 @@ public class p3 implements ActionListener {
 			System.out.println("이미지를 로드하는 중 오류 발생: " + e.getMessage());
 		}
 		btnNewButton_2_6_1.setText("치즈 케이크");
-		btnNewButton_2_6_1.setBounds(29, 33, 120, 120);
+		btnNewButton_2_6_1.setBounds(70, 130, 120, 120);
 		panel_3.add(btnNewButton_2_6_1);
 
 		JButton btnNewButton_2_6_2 = new JButton("New button");
@@ -396,7 +482,7 @@ public class p3 implements ActionListener {
 			System.out.println("이미지를 로드하는 중 오류 발생: " + e.getMessage());
 		}
 		btnNewButton_2_6_2.setText("초코 케이크");
-		btnNewButton_2_6_2.setBounds(183, 33, 120, 120);
+		btnNewButton_2_6_2.setBounds(280, 130, 120, 120);
 		panel_3.add(btnNewButton_2_6_2);
 
 		JButton btnNewButton_2_6_3 = new JButton("New button");
@@ -412,7 +498,7 @@ public class p3 implements ActionListener {
 			System.out.println("이미지를 로드하는 중 오류 발생: " + e.getMessage());
 		}
 		btnNewButton_2_6_3.setText("에그타르트");
-		btnNewButton_2_6_3.setBounds(29, 233, 120, 120);
+		btnNewButton_2_6_3.setBounds(70, 300, 120, 120);
 		panel_3.add(btnNewButton_2_6_3);
 
 		JButton btnNewButton_2_6_4 = new JButton("New button");
@@ -428,34 +514,34 @@ public class p3 implements ActionListener {
 			System.out.println("이미지를 로드하는 중 오류 발생: " + e.getMessage());
 		}
 		btnNewButton_2_6_4.setText("휘낭시에");
-		btnNewButton_2_6_4.setBounds(183, 233, 120, 120);
+		btnNewButton_2_6_4.setBounds(280, 300, 120, 120);
 		panel_3.add(btnNewButton_2_6_4);
 
 		JTextPane textPane_3_1_2 = new JTextPane();
 		textPane_3_1_2.setText("     초코 케이크\r\n        4,000원");
 		textPane_3_1_2.setFont(new Font("굴림", Font.BOLD, 12));
-		textPane_3_1_2.setBounds(183, 163, 120, 42);
+		textPane_3_1_2.setBounds(280, 250, 120, 42);
 		panel_3.add(textPane_3_1_2);
 
 		JTextPane textPane_3_1_3 = new JTextPane();
 		textPane_3_1_3.setText("     에그 타르트\r\n        2,500원");
 		textPane_3_1_3.setFont(new Font("굴림", Font.BOLD, 12));
-		textPane_3_1_3.setBounds(29, 363, 120, 42);
+		textPane_3_1_3.setBounds(70, 420, 120, 42);
 		panel_3.add(textPane_3_1_3);
 
 		JTextPane textPane_3_1_4 = new JTextPane();
 		textPane_3_1_4.setText("      휘낭시에\r\n        2,000원");
 		textPane_3_1_4.setFont(new Font("굴림", Font.BOLD, 12));
-		textPane_3_1_4.setBounds(183, 363, 120, 42);
+		textPane_3_1_4.setBounds(280, 420, 120, 42);
 		panel_3.add(textPane_3_1_4);
 
 		JTextPane textPane_3_1_2_1 = new JTextPane();
 		textPane_3_1_2_1.setText("     치즈 케이크\r\n        4,000원");
 		textPane_3_1_2_1.setFont(new Font("굴림", Font.BOLD, 12));
-		textPane_3_1_2_1.setBounds(29, 163, 120, 42);
+		textPane_3_1_2_1.setBounds(70, 250, 120, 42);
 		panel_3.add(textPane_3_1_2_1);
 
-		JPanel panel_4 = new JPanel();
+		
 		panel_4.setBackground(new Color(240, 255, 255));
 		tabbedPane.addTab("사이드", null, panel_4, null);
 		panel_4.setLayout(null);
@@ -473,7 +559,7 @@ public class p3 implements ActionListener {
 			System.out.println("이미지를 로드하는 중 오류 발생: " + e.getMessage());
 		}
 		btnNewButton_2_6_1_1.setText("리코타샐러드");
-		btnNewButton_2_6_1_1.setBounds(36, 44, 120, 120);
+		btnNewButton_2_6_1_1.setBounds(70, 130, 120, 120);
 		panel_4.add(btnNewButton_2_6_1_1);
 
 		JButton btnNewButton_2_6_1_2 = new JButton("New button");
@@ -489,7 +575,7 @@ public class p3 implements ActionListener {
 			System.out.println("이미지를 로드하는 중 오류 발생: " + e.getMessage());
 		}
 		btnNewButton_2_6_1_2.setText("케이준치킨샐러드");
-		btnNewButton_2_6_1_2.setBounds(192, 44, 120, 120);
+		btnNewButton_2_6_1_2.setBounds(280, 130, 120, 120);
 		panel_4.add(btnNewButton_2_6_1_2);
 
 		JButton btnNewButton_2_6_1_3 = new JButton("New button");
@@ -505,7 +591,7 @@ public class p3 implements ActionListener {
 			System.out.println("이미지를 로드하는 중 오류 발생: " + e.getMessage());
 		}
 		btnNewButton_2_6_1_3.setText("양송이 크림스프");
-		btnNewButton_2_6_1_3.setBounds(36, 237, 120, 120);
+		btnNewButton_2_6_1_3.setBounds(70, 300, 120, 120);
 		panel_4.add(btnNewButton_2_6_1_3);
 
 		JButton btnNewButton_2_6_1_4 = new JButton("New button");
@@ -521,31 +607,31 @@ public class p3 implements ActionListener {
 			System.out.println("이미지를 로드하는 중 오류 발생: " + e.getMessage());
 		}
 		btnNewButton_2_6_1_4.setText("감자튀김");
-		btnNewButton_2_6_1_4.setBounds(192, 237, 120, 120);
+		btnNewButton_2_6_1_4.setBounds(280, 300, 120, 120);
 		panel_4.add(btnNewButton_2_6_1_4);
 
 		JTextPane textPane_3_1_2_2 = new JTextPane();
-		textPane_3_1_2_2.setText("      리코타샐러드\r\n          8,000원");
+		textPane_3_1_2_2.setText("     리코타샐러드\r\n          8,000원");
 		textPane_3_1_2_2.setFont(new Font("굴림", Font.BOLD, 12));
-		textPane_3_1_2_2.setBounds(36, 174, 120, 42);
+		textPane_3_1_2_2.setBounds(70, 250, 120, 42);
 		panel_4.add(textPane_3_1_2_2);
 
 		JTextPane textPane_3_1_2_3 = new JTextPane();
-		textPane_3_1_2_3.setText("     케이준치킨샐러드\r\n          9,000원");
+		textPane_3_1_2_3.setText("  케이준치킨샐러드\r\n          9,000원");
 		textPane_3_1_2_3.setFont(new Font("굴림", Font.BOLD, 12));
-		textPane_3_1_2_3.setBounds(179, 174, 140, 42);
+		textPane_3_1_2_3.setBounds(280, 250, 120, 42);
 		panel_4.add(textPane_3_1_2_3);
 
 		JTextPane textPane_3_1_2_4 = new JTextPane();
-		textPane_3_1_2_4.setText("     양송이 크림스프\r\n         4,000원");
+		textPane_3_1_2_4.setText("   양송이 크림스프\r\n         4,000원");
 		textPane_3_1_2_4.setFont(new Font("굴림", Font.BOLD, 12));
-		textPane_3_1_2_4.setBounds(36, 367, 120, 42);
+		textPane_3_1_2_4.setBounds(70, 420, 120, 42);
 		panel_4.add(textPane_3_1_2_4);
 
 		JTextPane textPane_3_1_2_5 = new JTextPane();
 		textPane_3_1_2_5.setText("       감자튀김\r\n        2,500원");
 		textPane_3_1_2_5.setFont(new Font("굴림", Font.BOLD, 12));
-		textPane_3_1_2_5.setBounds(192, 367, 120, 42);
+		textPane_3_1_2_5.setBounds(280, 420, 120, 42);
 		panel_4.add(textPane_3_1_2_5);
 
 		// 좌측 그리드 세팅
@@ -680,37 +766,13 @@ public class p3 implements ActionListener {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				int orderId = 0;
-				int j  = new Pay_Card_View().Pay((totalnum - cus_pointUsed));
+			//	int orderId = 0;
+				Pay_Card_View pay = new Pay_Card_View();
+				pay.Pay((totalnum - cus_pointUsed));
 				
-				System.out.println("마지막 j : " +  j);
+				System.out.println("마지막 j : " + pay.j );
 				
-				if(j == 0) { // 결제성공
-					dao.insertOrder(cusDTO, (totalnum - cus_pointUsed), cus_pointUsed);
-
-					try {
-						orderId = dao.selectOrder();
-					} catch (SQLException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-					// model1에서 셀마다 데이터 받아오는 걸로. for문돌려서 아래 메서드 호출해야 겠다.
-					// dao.insertOrderDetail(orderId,수량.., 상품id );
-					try {
-						callDatail(orderId);
-					} catch (SQLException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					} // 해당 클래스에 메소드 추가.
-
-					dao.updateCus(cusDTO, cus_pointUsed); // 사용한 마일리지 차감.
-					model.setRowCount(0);
-					newModel2.setRowCount(0);
-			
-				}else { //결제실패
-					System.out.println("카드결제 실패");
-				}
-				
+				cardStep(pay);
 				
 
 
@@ -754,18 +816,25 @@ public class p3 implements ActionListener {
 			public void actionPerformed(ActionEvent e) {
 				// 고객 번호 받은 인자를 쿼리문 메서드로 넘겨서 조회된 포인트 리턴,id (CustomerDTO) 받음.
 				try {
-					String phone = pointView.checkCus_point();
+					String phone = null;
+					phone = pointView.checkCus_point();
 					
+					if(phone == null || phone.trim().isEmpty()) {
+					    JOptionPane.showMessageDialog(frame, "유효한 전화번호를 입력해주세요.");
+					    return;
+					
+					}else {
 					cusDTO = dao.getCus_point(phone);
 					// cusDTO에 조회한 고객 id, 마일리지 저장되어 있음.
 					System.out.println();
-					if (cusDTO.getCus_id() == null&&phone!="") {
+					
+					if (cusDTO.getCus_id() == null && phone != null && !phone.trim().isEmpty()) {
 						System.out.println("타냐1? ");
 						dao.insertCus(phone);
 						JOptionPane.showMessageDialog(frame, "등록되지 않는 고객으로 가입작업 완료하였습니다.");
 						cusDTO = dao.getCus_point(phone);
 					}
-
+					}
 					// 조회된 고객 정보 cusDTO로 담아둠
 
 					JOptionPane.showMessageDialog(frame, "현재 마일리지: " + cusDTO.getCus_point() + "점");
@@ -842,11 +911,30 @@ public class p3 implements ActionListener {
 					e1.printStackTrace();
 				} // 해당 클래스에 메소드 추가.
 
-				dao.updateCus(cusDTO, cus_pointUsed); // 사용한 마일리지 차감.
+				
 				model.setRowCount(0);
 				newModel2.setRowCount(0);
-				cusDTO = new CustomerDTO(); //주문 단위 끝날때 고객 정보 초기화 
+			
+				System.out.println("cusDTO.getCus_id(): "+ cusDTO.getCus_id()+", cus_pointUsed :" + cus_pointUsed);
+				if (cus_pointUsed == 0 && cusDTO.getCus_id() != null) {
+				    System.out.println("조건 충족: 결제 후 적립 프로세스 실행");
+				    System.out.println("cus_pointUsed: " + cus_pointUsed);
+				    System.out.println("cusDTO.getCus_id(): " + cusDTO.getCus_id());
 
+				    int rewardPoints = (int) ((totalnum - cus_pointUsed) * 0.1);
+				    System.out.println("적립된 포인트: " + rewardPoints + "점");
+
+				    dao.updatePoint(cusDTO, rewardPoints);
+				} else {
+				    System.out.println("조건 미충족: 포인트 적립 미실행");
+				    System.out.println("cus_pointUsed: " + cus_pointUsed);
+				    System.out.println("cusDTO.getCus_id(): " + cusDTO.getCus_id());
+
+				    dao.updateCus(cusDTO, cus_pointUsed); // 사용한 마일리지 차감.
+				}
+			
+				cusDTO = new CustomerDTO(); //주문 단위 끝날때 고객 정보 초기화 
+			
 			}
 		});
 
@@ -943,8 +1031,8 @@ public class p3 implements ActionListener {
 
 		String driver = "oracle.jdbc.driver.OracleDriver";
 		String url = "jdbc:oracle:thin:@localhost:1521:xe";
-		String user = "system";
-		String password = "1234";
+		String user = "jys";
+		String password = "pass";
 
 		try {
 			// 1. 접속할 오라클 데이터베이스 드라이버를 메모리에 올리자. - 동적 작업
@@ -1029,4 +1117,64 @@ public class p3 implements ActionListener {
 
 	}
 
+	public void cardStep(Pay_Card_View pay) {
+		   new Thread(() -> {
+		        try {
+		            // pay.plung이 true가 될 때까지 대기
+		            while (!pay.plug) {
+		                Thread.sleep(100); // 100ms 간격으로 확인
+		            }
+		        } catch (InterruptedException e) {
+		            e.printStackTrace();
+		        }
+
+		        // pay.plung이 true가 된 이후 실행
+		        if (pay.j == 0) { // 결제 성공
+		            dao.insertOrder(cusDTO, (totalnum - cus_pointUsed), cus_pointUsed);
+
+		            int orderId = 0;
+		            try {
+		                orderId = dao.selectOrder();
+		            } catch (SQLException e1) {
+		                e1.printStackTrace();
+		            }
+
+		            try {
+		                callDatail(orderId);
+		            } catch (SQLException e1) {
+		                e1.printStackTrace();
+		            }
+
+		            model.setRowCount(0);
+					newModel2.setRowCount(0);
+				
+					System.out.println("cusDTO.getCus_id(): "+ cusDTO.getCus_id()+", cus_pointUsed :" + cus_pointUsed);
+					if (cus_pointUsed == 0 && cusDTO.getCus_id() != null) {
+					    System.out.println("조건 충족: 결제 후 적립 프로세스 실행");
+					    System.out.println("cus_pointUsed: " + cus_pointUsed);
+					    System.out.println("cusDTO.getCus_id(): " + cusDTO.getCus_id());
+
+					    int rewardPoints = (int) ((totalnum - cus_pointUsed) * 0.1);
+					    System.out.println("적립된 포인트: " + rewardPoints + "점");
+
+					    dao.updatePoint(cusDTO, rewardPoints);
+					} else {
+					    System.out.println("조건 미충족: 포인트 적립 미실행");
+					    System.out.println("cus_pointUsed: " + cus_pointUsed);
+					    System.out.println("cusDTO.getCus_id(): " + cusDTO.getCus_id());
+
+					    dao.updateCus(cusDTO, cus_pointUsed); // 사용한 마일리지 차감.
+					}
+				
+					cusDTO = new CustomerDTO(); //주문 단위 끝날때 고객 정보 초기화 
+		            System.out.println("결제 및 적립 프로세스 완료");
+		        } else { // 결제 실패
+		            System.out.println("카드결제 실패");
+		        }
+		    }).start();
+		}
+
+
+	
+	
 }
