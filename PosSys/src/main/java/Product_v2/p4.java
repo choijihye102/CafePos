@@ -14,7 +14,7 @@ import OrderPage.*;
 import java.sql.*;
 import java.util.*;
 
-public class p3 implements ActionListener {
+public class p4 implements ActionListener {
 	Connection con = null; // DB와 연결하는 객체
 	PreparedStatement pstmt = null; // SQL문을 DB에 전송하는 객체
 	ResultSet rs = null; // SQL문 실행 결과를 가지고 있는 객체
@@ -49,7 +49,7 @@ public class p3 implements ActionListener {
 			public void run() {
 				try {
 
-					p3 window = new p3();
+					p4 window = new p4();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -61,7 +61,7 @@ public class p3 implements ActionListener {
 	/**
 	 * Create the application.
 	 */
-	public p3() {
+	public p4() {
 		initialize();
 	}
 
@@ -69,109 +69,26 @@ public class p3 implements ActionListener {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-	    frame = new JFrame();
-	    frame.setTitle("메뉴판");
-	    frame.setBounds(100, 100, 980, 630);
-	    //frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	    frame.setVisible(true);
-	    frame.getContentPane().setLayout(new GridLayout(1, 0));
+		frame = new JFrame();
+		frame.setTitle("메뉴판");
+		frame.setBounds(100, 100, 743, 567);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setVisible(true);
+		frame.getContentPane().setLayout(new GridLayout(1, 0));
 
-	    JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-	    frame.getContentPane().add(tabbedPane);
+		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane.setBounds(0, 0, 349, 528);
+		frame.getContentPane().add(tabbedPane);
 
-	    // 첫 번째 탭: 커피
-	    JPanel panel = new JPanel() {
-	        @Override
-	        protected void paintComponent(Graphics g) {
-	            super.paintComponent(g);
-	            try {
-	                ImageIcon icon = new ImageIcon(getClass().getResource("/coffee/커피배경.png"));
-	                Image img = icon.getImage();
-	                g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
-	            } catch (Exception e) {
-	                System.out.println("이미지를 로드할 수 없습니다: " + e.getMessage());
-	            }
-	        }
-	    };
-	    panel.setBackground(Color.WHITE);
-	    tabbedPane.addTab("커피", null, panel, null);
+		JPanel panel = new JPanel();
+		panel.setBackground(Color.WHITE);
+		tabbedPane.addTab("커피", null, panel, null);
+		panel.setLayout(null);
 
-	    // 두 번째 탭: 파스타
-	    JPanel panel_1 = new JPanel() {
-	        @Override
-	        protected void paintComponent(Graphics g) {
-	            super.paintComponent(g);
-	            try {
-	                ImageIcon icon = new ImageIcon(getClass().getResource("/pasta/파스타배경.png"));
-	                Image img = icon.getImage();
-	                g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
-	            } catch (Exception e) {
-	                System.out.println("이미지를 로드할 수 없습니다: " + e.getMessage());
-	            }
-	        }
-	    };
-	    panel_1.setBackground(Color.WHITE);
-	    tabbedPane.addTab("파스타", null, panel_1, null);
-
-	    // 세 번째 탭: 음료
-	    JPanel panel_2 = new JPanel() {
-	        @Override
-	        protected void paintComponent(Graphics g) {
-	            super.paintComponent(g);
-	            try {
-	                ImageIcon icon = new ImageIcon(getClass().getResource("/drink/음료배경.png"));
-	                Image img = icon.getImage();
-	                g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
-	            } catch (Exception e) {
-	                System.out.println("이미지를 로드할 수 없습니다: " + e.getMessage());
-	            }
-	        }
-	    };
-	    panel_2.setBackground(Color.WHITE);
-	    tabbedPane.addTab("음료", null, panel_2, null);
-
-	    // 네 번째 탭: 디저트
-	    JPanel panel_3 = new JPanel() {
-	        @Override
-	        protected void paintComponent(Graphics g) {
-	            super.paintComponent(g);
-	            try {
-	                ImageIcon icon = new ImageIcon(getClass().getResource("/dessert/디저트배경.png"));
-	                Image img = icon.getImage();
-	                g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
-	            } catch (Exception e) {
-	                System.out.println("이미지를 로드할 수 없습니다: " + e.getMessage());
-	            }
-	        }
-	    };
-	    panel_3.setBackground(Color.WHITE);
-	    tabbedPane.addTab("디저트", null, panel_3, null);
-
-	    // 다섯 번째 탭: 추가 탭 (예시)
-	    JPanel panel_4 = new JPanel() {
-	        @Override
-	        protected void paintComponent(Graphics g) {
-	            super.paintComponent(g);
-	            try {
-	                ImageIcon icon = new ImageIcon(getClass().getResource("/side/사이드배경.png"));
-	                Image img = icon.getImage();
-	                g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
-	            } catch (Exception e) {
-	                System.out.println("이미지를 로드할 수 없습니다: " + e.getMessage());
-	            }
-	        }
-	    };
-	    panel_4.setBackground(Color.WHITE);
-	    tabbedPane.addTab("사이드", null, panel_4, null);
-	    
-	    panel.setBackground(Color.WHITE);
-	    tabbedPane.addTab("커피", null, panel, null);
-	    panel.setLayout(null);
-		
 		// 라떼 동적으로 올리기.(시작 부분)
 		JButton btnNewButton_3 = new JButton("New button");
 		try {
-			URL imageUrl = p3.class.getResource("/coffee/카페라떼.jpg"); // 리소스 경로 설정
+			URL imageUrl = p4.class.getResource("/coffee/카페라떼.jpg"); // 리소스 경로 설정
 			if (imageUrl != null) {
 				ImageIcon icon = new ImageIcon(imageUrl);
 				btnNewButton_3.setIcon(icon);
@@ -184,12 +101,12 @@ public class p3 implements ActionListener {
 		btnNewButton_3.setText("카페라떼");
 		// 라떼 동적으로 올리기. (끝 부분)
 
-		btnNewButton_3.setBounds(70, 300, 120, 120);
+		btnNewButton_3.setBounds(12, 255, 120, 120);
 		panel.add(btnNewButton_3);
 
 		JButton btnNewButton_4 = new JButton("New button");
 		try {
-			URL imageUrl = p3.class.getResource("/coffee/카라멜 마끼아또.jpg"); // 리소스 경로 설정
+			URL imageUrl = p4.class.getResource("/coffee/카라멜 마끼아또.jpg"); // 리소스 경로 설정
 			if (imageUrl != null) {
 				ImageIcon icon = new ImageIcon(imageUrl);
 				btnNewButton_4.setIcon(icon);
@@ -201,12 +118,12 @@ public class p3 implements ActionListener {
 		}
 		btnNewButton_4.setText("카라멜 마끼아또");
 
-		btnNewButton_4.setBounds(280, 300, 120, 120);
+		btnNewButton_4.setBounds(176, 255, 120, 120);
 		panel.add(btnNewButton_4);
 
 		JButton btnNewButton_2 = new JButton("New button");
 		try {
-			URL imageUrl = p3.class.getResource("/coffee/아이스 아메리카노.jpg"); // 리소스 경로 설정
+			URL imageUrl = p4.class.getResource("/coffee/아이스 아메리카노.jpg"); // 리소스 경로 설정
 			if (imageUrl != null) {
 				ImageIcon icon = new ImageIcon(imageUrl);
 				btnNewButton_2.setIcon(icon);
@@ -218,12 +135,12 @@ public class p3 implements ActionListener {
 		}
 		btnNewButton_2.setText("아이스 아메리카노");
 
-		btnNewButton_2.setBounds(70, 130, 120, 120);
+		btnNewButton_2.setBounds(12, 52, 120, 120);
 		panel.add(btnNewButton_2);
 
 		JButton btnNewButton_2_1 = new JButton("New button");
 		try {
-			URL imageUrl = p3.class.getResource("/coffee/카페라떼.jpg"); // 리소스 경로 설정
+			URL imageUrl = p4.class.getResource("/coffee/카페라떼.jpg"); // 리소스 경로 설정
 			if (imageUrl != null) {
 				ImageIcon icon = new ImageIcon(imageUrl);
 				btnNewButton_2_1.setIcon(icon);
@@ -235,41 +152,42 @@ public class p3 implements ActionListener {
 		}
 		btnNewButton_2_1.setText("바닐라 라떼");
 
-		btnNewButton_2_1.setBounds(280, 130, 120, 120);
+		btnNewButton_2_1.setBounds(176, 52, 120, 120);
 		panel.add(btnNewButton_2_1);
 
 		JTextPane textPane = new JTextPane();
 		textPane.setBackground(Color.WHITE);
 		textPane.setFont(new Font("굴림", Font.BOLD, 12));
 		textPane.setText("  아이스 아메리카노\r\n        2,500원");
-		textPane.setBounds(70, 250, 120, 42);
+		textPane.setBounds(12, 182, 120, 42);
 		panel.add(textPane);
 
 		JTextPane textPane_1 = new JTextPane();
 		textPane_1.setText("    바닐라 라떼\r\n       3,500원");
 		textPane_1.setFont(new Font("굴림", Font.BOLD, 12));
-		textPane_1.setBounds(280, 250, 120, 42);
+		textPane_1.setBounds(176, 182, 120, 42);
 		panel.add(textPane_1);
 
 		JTextPane textPane_2 = new JTextPane();
 		textPane_2.setText("       카페라떼\r\n        3,500원");
 		textPane_2.setFont(new Font("굴림", Font.BOLD, 12));
-		textPane_2.setBounds(70, 420, 120, 42);
+		textPane_2.setBounds(12, 385, 120, 42);
 		panel.add(textPane_2);
 
 		JTextPane textPane_2_1 = new JTextPane();
 		textPane_2_1.setText("   카라멜 마끼아또\r\n        4,000원");
 		textPane_2_1.setFont(new Font("굴림", Font.BOLD, 12));
-		textPane_2_1.setBounds(280, 420, 120, 42);
+		textPane_2_1.setBounds(176, 385, 120, 42);
 		panel.add(textPane_2_1);
-		
+
+		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(Color.WHITE);
 		tabbedPane.addTab("파스타", null, panel_1, null);
 		panel_1.setLayout(null);
 
 		JButton btnNewButton_2_2 = new JButton("New button");
 		try {
-			URL imageUrl = p3.class.getResource("/pasta/토마토 파스타.jpg"); // 리소스 경로 설정
+			URL imageUrl = p4.class.getResource("/pasta/토마토 파스타.jpg"); // 리소스 경로 설정
 			if (imageUrl != null) {
 				ImageIcon icon = new ImageIcon(imageUrl);
 				btnNewButton_2_2.setIcon(icon);
@@ -280,12 +198,12 @@ public class p3 implements ActionListener {
 			System.out.println("이미지를 로드하는 중 오류 발생: " + e.getMessage());
 		}
 		btnNewButton_2_2.setText("토마토 파스타");
-		btnNewButton_2_2.setBounds(70, 130, 120, 120);
+		btnNewButton_2_2.setBounds(29, 41, 120, 120);
 		panel_1.add(btnNewButton_2_2);
 
 		JButton btnNewButton_2_3 = new JButton("New button");
 		try {
-			URL imageUrl = p3.class.getResource("/pasta/라구 파스타.jpg"); // 리소스 경로 설정
+			URL imageUrl = p4.class.getResource("/pasta/라구 파스타.jpg"); // 리소스 경로 설정
 			if (imageUrl != null) {
 				ImageIcon icon = new ImageIcon(imageUrl);
 				btnNewButton_2_3.setIcon(icon);
@@ -296,12 +214,12 @@ public class p3 implements ActionListener {
 			System.out.println("이미지를 로드하는 중 오류 발생: " + e.getMessage());
 		}
 		btnNewButton_2_3.setText("라구 파스타");
-		btnNewButton_2_3.setBounds(280, 130, 120, 120);
+		btnNewButton_2_3.setBounds(186, 41, 120, 120);
 		panel_1.add(btnNewButton_2_3);
 
 		JButton btnNewButton_2_4 = new JButton("New button");
 		try {
-			URL imageUrl = p3.class.getResource("/pasta/바질페스토 파스타.jpg"); // 리소스 경로 설정
+			URL imageUrl = p4.class.getResource("/pasta/바질페스토 파스타.jpg"); // 리소스 경로 설정
 			if (imageUrl != null) {
 				ImageIcon icon = new ImageIcon(imageUrl);
 				btnNewButton_2_4.setIcon(icon);
@@ -312,12 +230,12 @@ public class p3 implements ActionListener {
 			System.out.println("이미지를 로드하는 중 오류 발생: " + e.getMessage());
 		}
 		btnNewButton_2_4.setText("바질페스토 파스타");
-		btnNewButton_2_4.setBounds(70, 300, 120, 120);
+		btnNewButton_2_4.setBounds(29, 265, 120, 120);
 		panel_1.add(btnNewButton_2_4);
 
 		JButton btnNewButton_2_5 = new JButton("New button");
 		try {
-			URL imageUrl = p3.class.getResource("/pasta/알리오올리오.jpg"); // 리소스 경로 설정
+			URL imageUrl = p4.class.getResource("/pasta/알리오올리오.jpg"); // 리소스 경로 설정
 			if (imageUrl != null) {
 				ImageIcon icon = new ImageIcon(imageUrl);
 				btnNewButton_2_5.setIcon(icon);
@@ -328,41 +246,41 @@ public class p3 implements ActionListener {
 			System.out.println("이미지를 로드하는 중 오류 발생: " + e.getMessage());
 		}
 		btnNewButton_2_5.setText("알리오올리오");
-		btnNewButton_2_5.setBounds(280, 300, 120, 120);
+		btnNewButton_2_5.setBounds(186, 265, 120, 120);
 		panel_1.add(btnNewButton_2_5);
 
 		JTextPane textPane_3 = new JTextPane();
 		textPane_3.setText("    토마토 파스타\r\n        7,000원");
 		textPane_3.setFont(new Font("굴림", Font.BOLD, 12));
-		textPane_3.setBounds(70, 250, 120, 42);
+		textPane_3.setBounds(29, 171, 120, 42);
 		panel_1.add(textPane_3);
 
 		JTextPane textPane_4 = new JTextPane();
 		textPane_4.setText("     라구 파스타\r\n        8,500원");
 		textPane_4.setFont(new Font("굴림", Font.BOLD, 12));
-		textPane_4.setBounds(280, 250, 120, 42);
+		textPane_4.setBounds(186, 171, 120, 42);
 		panel_1.add(textPane_4);
 
 		JTextPane textPane_5 = new JTextPane();
 		textPane_5.setText("  바질페스토 파스타\r\n        8,000원");
 		textPane_5.setFont(new Font("굴림", Font.BOLD, 12));
-		textPane_5.setBounds(70, 420, 120, 42);
+		textPane_5.setBounds(29, 395, 120, 42);
 		panel_1.add(textPane_5);
 
 		JTextPane textPane_6 = new JTextPane();
 		textPane_6.setText("     알리오올리오\r\n         8,500원");
 		textPane_6.setFont(new Font("굴림", Font.BOLD, 12));
-		textPane_6.setBounds(280, 420, 120, 42);
+		textPane_6.setBounds(186, 395, 120, 42);
 		panel_1.add(textPane_6);
 
-		
+		JPanel panel_2 = new JPanel();
 		panel_2.setBackground(Color.WHITE);
 		tabbedPane.addTab("음료", null, panel_2, null);
 		panel_2.setLayout(null);
 
 		JButton btnNewButton_2_6 = new JButton("New button");
 		try {
-			URL imageUrl = p3.class.getResource("/drink/레몬에이드.jpg"); // 리소스 경로 설정
+			URL imageUrl = p4.class.getResource("/drink/레몬에이드.jpg"); // 리소스 경로 설정
 			if (imageUrl != null) {
 				ImageIcon icon = new ImageIcon(imageUrl);
 				btnNewButton_2_6.setIcon(icon);
@@ -373,12 +291,12 @@ public class p3 implements ActionListener {
 			System.out.println("이미지를 로드하는 중 오류 발생: " + e.getMessage());
 		}
 		btnNewButton_2_6.setText("레몬에이드");
-		btnNewButton_2_6.setBounds(70, 130, 120, 120);
+		btnNewButton_2_6.setBounds(34, 35, 120, 120);
 		panel_2.add(btnNewButton_2_6);
 
 		JButton btnNewButton_2_7 = new JButton("New button");
 		try {
-			URL imageUrl = p3.class.getResource("/drink/블루에이드.jpg"); // 리소스 경로 설정
+			URL imageUrl = p4.class.getResource("/drink/블루에이드.jpg"); // 리소스 경로 설정
 			if (imageUrl != null) {
 				ImageIcon icon = new ImageIcon(imageUrl);
 				btnNewButton_2_7.setIcon(icon);
@@ -389,12 +307,12 @@ public class p3 implements ActionListener {
 			System.out.println("이미지를 로드하는 중 오류 발생: " + e.getMessage());
 		}
 		btnNewButton_2_7.setText("블루에이드");
-		btnNewButton_2_7.setBounds(280, 130, 120, 120);
+		btnNewButton_2_7.setBounds(193, 35, 120, 120);
 		panel_2.add(btnNewButton_2_7);
 
 		JButton btnNewButton_2_8 = new JButton("New button");
 		try {
-			URL imageUrl = p3.class.getResource("/drink/사이다.jpg"); // 리소스 경로 설정
+			URL imageUrl = p4.class.getResource("/drink/사이다.jpg"); // 리소스 경로 설정
 			if (imageUrl != null) {
 				ImageIcon icon = new ImageIcon(imageUrl);
 				btnNewButton_2_8.setIcon(icon);
@@ -405,12 +323,12 @@ public class p3 implements ActionListener {
 			System.out.println("이미지를 로드하는 중 오류 발생: " + e.getMessage());
 		}
 		btnNewButton_2_8.setText("사이다");
-		btnNewButton_2_8.setBounds(70, 300, 120, 120);
+		btnNewButton_2_8.setBounds(34, 225, 120, 120);
 		panel_2.add(btnNewButton_2_8);
 
 		JButton btnNewButton_2_9 = new JButton("New button");
 		try {
-			URL imageUrl = p3.class.getResource("/drink/콜라.jpg"); // 리소스 경로 설정
+			URL imageUrl = p4.class.getResource("/drink/콜라.jpg"); // 리소스 경로 설정
 			if (imageUrl != null) {
 				ImageIcon icon = new ImageIcon(imageUrl);
 				btnNewButton_2_9.setIcon(icon);
@@ -421,41 +339,41 @@ public class p3 implements ActionListener {
 			System.out.println("이미지를 로드하는 중 오류 발생: " + e.getMessage());
 		}
 		btnNewButton_2_9.setText("콜라");
-		btnNewButton_2_9.setBounds(280, 300, 120, 120);
+		btnNewButton_2_9.setBounds(193, 225, 120, 120);
 		panel_2.add(btnNewButton_2_9);
 
 		JTextPane textPane_3_1 = new JTextPane();
 		textPane_3_1.setText("     레몬 에이드\r\n        4,000원");
 		textPane_3_1.setFont(new Font("굴림", Font.BOLD, 12));
-		textPane_3_1.setBounds(70, 250, 120, 42);
+		textPane_3_1.setBounds(34, 165, 120, 42);
 		panel_2.add(textPane_3_1);
 
 		JTextPane textPane_3_2 = new JTextPane();
 		textPane_3_2.setText("    블루 에이드\r\n        4,000원");
 		textPane_3_2.setFont(new Font("굴림", Font.BOLD, 12));
-		textPane_3_2.setBounds(280, 250, 120, 42);
+		textPane_3_2.setBounds(193, 165, 120, 42);
 		panel_2.add(textPane_3_2);
 
 		JTextPane textPane_3_3 = new JTextPane();
 		textPane_3_3.setText("        사이다\r\n        2,000원");
 		textPane_3_3.setFont(new Font("굴림", Font.BOLD, 12));
-		textPane_3_3.setBounds(70, 420, 120, 42);
+		textPane_3_3.setBounds(34, 355, 120, 42);
 		panel_2.add(textPane_3_3);
 
 		JTextPane textPane_3_4 = new JTextPane();
 		textPane_3_4.setText("          콜라\r\n        2,000원");
 		textPane_3_4.setFont(new Font("굴림", Font.BOLD, 12));
-		textPane_3_4.setBounds(280, 420, 120, 42);
+		textPane_3_4.setBounds(193, 355, 120, 42);
 		panel_2.add(textPane_3_4);
 
-		
+		JPanel panel_3 = new JPanel();
 		panel_3.setBackground(Color.WHITE);
 		tabbedPane.addTab("디저트", null, panel_3, null);
 		panel_3.setLayout(null);
 
 		JButton btnNewButton_2_6_1 = new JButton("New button");
 		try {
-			URL imageUrl = p3.class.getResource("/dessert/치즈 케이크.jpg"); // 리소스 경로 설정
+			URL imageUrl = p4.class.getResource("/dessert/치즈 케이크.jpg"); // 리소스 경로 설정
 			if (imageUrl != null) {
 				ImageIcon icon = new ImageIcon(imageUrl);
 				btnNewButton_2_6_1.setIcon(icon);
@@ -466,12 +384,12 @@ public class p3 implements ActionListener {
 			System.out.println("이미지를 로드하는 중 오류 발생: " + e.getMessage());
 		}
 		btnNewButton_2_6_1.setText("치즈 케이크");
-		btnNewButton_2_6_1.setBounds(70, 130, 120, 120);
+		btnNewButton_2_6_1.setBounds(29, 33, 120, 120);
 		panel_3.add(btnNewButton_2_6_1);
 
 		JButton btnNewButton_2_6_2 = new JButton("New button");
 		try {
-			URL imageUrl = p3.class.getResource("/dessert/초코 케이크.jpg"); // 리소스 경로 설정
+			URL imageUrl = p4.class.getResource("/dessert/초코 케이크.jpg"); // 리소스 경로 설정
 			if (imageUrl != null) {
 				ImageIcon icon = new ImageIcon(imageUrl);
 				btnNewButton_2_6_2.setIcon(icon);
@@ -482,12 +400,12 @@ public class p3 implements ActionListener {
 			System.out.println("이미지를 로드하는 중 오류 발생: " + e.getMessage());
 		}
 		btnNewButton_2_6_2.setText("초코 케이크");
-		btnNewButton_2_6_2.setBounds(280, 130, 120, 120);
+		btnNewButton_2_6_2.setBounds(183, 33, 120, 120);
 		panel_3.add(btnNewButton_2_6_2);
 
 		JButton btnNewButton_2_6_3 = new JButton("New button");
 		try {
-			URL imageUrl = p3.class.getResource("/dessert/에그타르트.jpg"); // 리소스 경로 설정
+			URL imageUrl = p4.class.getResource("/dessert/에그타르트.jpg"); // 리소스 경로 설정
 			if (imageUrl != null) {
 				ImageIcon icon = new ImageIcon(imageUrl);
 				btnNewButton_2_6_3.setIcon(icon);
@@ -498,12 +416,12 @@ public class p3 implements ActionListener {
 			System.out.println("이미지를 로드하는 중 오류 발생: " + e.getMessage());
 		}
 		btnNewButton_2_6_3.setText("에그타르트");
-		btnNewButton_2_6_3.setBounds(70, 300, 120, 120);
+		btnNewButton_2_6_3.setBounds(29, 233, 120, 120);
 		panel_3.add(btnNewButton_2_6_3);
 
 		JButton btnNewButton_2_6_4 = new JButton("New button");
 		try {
-			URL imageUrl = p3.class.getResource("/dessert/휘낭시에.jpg"); // 리소스 경로 설정
+			URL imageUrl = p4.class.getResource("/dessert/휘낭시에.jpg"); // 리소스 경로 설정
 			if (imageUrl != null) {
 				ImageIcon icon = new ImageIcon(imageUrl);
 				btnNewButton_2_6_4.setIcon(icon);
@@ -514,41 +432,41 @@ public class p3 implements ActionListener {
 			System.out.println("이미지를 로드하는 중 오류 발생: " + e.getMessage());
 		}
 		btnNewButton_2_6_4.setText("휘낭시에");
-		btnNewButton_2_6_4.setBounds(280, 300, 120, 120);
+		btnNewButton_2_6_4.setBounds(183, 233, 120, 120);
 		panel_3.add(btnNewButton_2_6_4);
 
 		JTextPane textPane_3_1_2 = new JTextPane();
 		textPane_3_1_2.setText("     초코 케이크\r\n        4,000원");
 		textPane_3_1_2.setFont(new Font("굴림", Font.BOLD, 12));
-		textPane_3_1_2.setBounds(280, 250, 120, 42);
+		textPane_3_1_2.setBounds(183, 163, 120, 42);
 		panel_3.add(textPane_3_1_2);
 
 		JTextPane textPane_3_1_3 = new JTextPane();
 		textPane_3_1_3.setText("     에그 타르트\r\n        2,500원");
 		textPane_3_1_3.setFont(new Font("굴림", Font.BOLD, 12));
-		textPane_3_1_3.setBounds(70, 420, 120, 42);
+		textPane_3_1_3.setBounds(29, 363, 120, 42);
 		panel_3.add(textPane_3_1_3);
 
 		JTextPane textPane_3_1_4 = new JTextPane();
 		textPane_3_1_4.setText("      휘낭시에\r\n        2,000원");
 		textPane_3_1_4.setFont(new Font("굴림", Font.BOLD, 12));
-		textPane_3_1_4.setBounds(280, 420, 120, 42);
+		textPane_3_1_4.setBounds(183, 363, 120, 42);
 		panel_3.add(textPane_3_1_4);
 
 		JTextPane textPane_3_1_2_1 = new JTextPane();
 		textPane_3_1_2_1.setText("     치즈 케이크\r\n        4,000원");
 		textPane_3_1_2_1.setFont(new Font("굴림", Font.BOLD, 12));
-		textPane_3_1_2_1.setBounds(70, 250, 120, 42);
+		textPane_3_1_2_1.setBounds(29, 163, 120, 42);
 		panel_3.add(textPane_3_1_2_1);
 
-		
+		JPanel panel_4 = new JPanel();
 		panel_4.setBackground(new Color(240, 255, 255));
 		tabbedPane.addTab("사이드", null, panel_4, null);
 		panel_4.setLayout(null);
 
 		JButton btnNewButton_2_6_1_1 = new JButton("New button");
 		try {
-			URL imageUrl = p3.class.getResource("/side/리코타샐러드.jpg"); // 리소스 경로 설정
+			URL imageUrl = p4.class.getResource("/side/리코타샐러드.jpg"); // 리소스 경로 설정
 			if (imageUrl != null) {
 				ImageIcon icon = new ImageIcon(imageUrl);
 				btnNewButton_2_6_1_1.setIcon(icon);
@@ -559,12 +477,12 @@ public class p3 implements ActionListener {
 			System.out.println("이미지를 로드하는 중 오류 발생: " + e.getMessage());
 		}
 		btnNewButton_2_6_1_1.setText("리코타샐러드");
-		btnNewButton_2_6_1_1.setBounds(70, 130, 120, 120);
+		btnNewButton_2_6_1_1.setBounds(36, 44, 120, 120);
 		panel_4.add(btnNewButton_2_6_1_1);
 
 		JButton btnNewButton_2_6_1_2 = new JButton("New button");
 		try {
-			URL imageUrl = p3.class.getResource("/side/케이준치킨샐러드.jpg"); // 리소스 경로 설정
+			URL imageUrl = p4.class.getResource("/side/케이준치킨샐러드.jpg"); // 리소스 경로 설정
 			if (imageUrl != null) {
 				ImageIcon icon = new ImageIcon(imageUrl);
 				btnNewButton_2_6_1_2.setIcon(icon);
@@ -575,12 +493,12 @@ public class p3 implements ActionListener {
 			System.out.println("이미지를 로드하는 중 오류 발생: " + e.getMessage());
 		}
 		btnNewButton_2_6_1_2.setText("케이준치킨샐러드");
-		btnNewButton_2_6_1_2.setBounds(280, 130, 120, 120);
+		btnNewButton_2_6_1_2.setBounds(192, 44, 120, 120);
 		panel_4.add(btnNewButton_2_6_1_2);
 
 		JButton btnNewButton_2_6_1_3 = new JButton("New button");
 		try {
-			URL imageUrl = p3.class.getResource("/side/양송이 크림스프.jpg"); // 리소스 경로 설정
+			URL imageUrl = p4.class.getResource("/side/양송이 크림스프.jpg"); // 리소스 경로 설정
 			if (imageUrl != null) {
 				ImageIcon icon = new ImageIcon(imageUrl);
 				btnNewButton_2_6_1_3.setIcon(icon);
@@ -591,12 +509,12 @@ public class p3 implements ActionListener {
 			System.out.println("이미지를 로드하는 중 오류 발생: " + e.getMessage());
 		}
 		btnNewButton_2_6_1_3.setText("양송이 크림스프");
-		btnNewButton_2_6_1_3.setBounds(70, 300, 120, 120);
+		btnNewButton_2_6_1_3.setBounds(36, 237, 120, 120);
 		panel_4.add(btnNewButton_2_6_1_3);
 
 		JButton btnNewButton_2_6_1_4 = new JButton("New button");
 		try {
-			URL imageUrl = p3.class.getResource("/side/감자튀김.jpg"); // 리소스 경로 설정
+			URL imageUrl = p4.class.getResource("/side/감자튀김.jpg"); // 리소스 경로 설정
 			if (imageUrl != null) {
 				ImageIcon icon = new ImageIcon(imageUrl);
 				btnNewButton_2_6_1_4.setIcon(icon);
@@ -607,31 +525,31 @@ public class p3 implements ActionListener {
 			System.out.println("이미지를 로드하는 중 오류 발생: " + e.getMessage());
 		}
 		btnNewButton_2_6_1_4.setText("감자튀김");
-		btnNewButton_2_6_1_4.setBounds(280, 300, 120, 120);
+		btnNewButton_2_6_1_4.setBounds(192, 237, 120, 120);
 		panel_4.add(btnNewButton_2_6_1_4);
 
 		JTextPane textPane_3_1_2_2 = new JTextPane();
-		textPane_3_1_2_2.setText("     리코타샐러드\r\n          8,000원");
+		textPane_3_1_2_2.setText("      리코타샐러드\r\n          8,000원");
 		textPane_3_1_2_2.setFont(new Font("굴림", Font.BOLD, 12));
-		textPane_3_1_2_2.setBounds(70, 250, 120, 42);
+		textPane_3_1_2_2.setBounds(36, 174, 120, 42);
 		panel_4.add(textPane_3_1_2_2);
 
 		JTextPane textPane_3_1_2_3 = new JTextPane();
-		textPane_3_1_2_3.setText("  케이준치킨샐러드\r\n          9,000원");
+		textPane_3_1_2_3.setText("     케이준치킨샐러드\r\n          9,000원");
 		textPane_3_1_2_3.setFont(new Font("굴림", Font.BOLD, 12));
-		textPane_3_1_2_3.setBounds(280, 250, 120, 42);
+		textPane_3_1_2_3.setBounds(179, 174, 140, 42);
 		panel_4.add(textPane_3_1_2_3);
 
 		JTextPane textPane_3_1_2_4 = new JTextPane();
-		textPane_3_1_2_4.setText("   양송이 크림스프\r\n         4,000원");
+		textPane_3_1_2_4.setText("     양송이 크림스프\r\n         4,000원");
 		textPane_3_1_2_4.setFont(new Font("굴림", Font.BOLD, 12));
-		textPane_3_1_2_4.setBounds(70, 420, 120, 42);
+		textPane_3_1_2_4.setBounds(36, 367, 120, 42);
 		panel_4.add(textPane_3_1_2_4);
 
 		JTextPane textPane_3_1_2_5 = new JTextPane();
 		textPane_3_1_2_5.setText("       감자튀김\r\n        2,500원");
 		textPane_3_1_2_5.setFont(new Font("굴림", Font.BOLD, 12));
-		textPane_3_1_2_5.setBounds(280, 420, 120, 42);
+		textPane_3_1_2_5.setBounds(192, 367, 120, 42);
 		panel_4.add(textPane_3_1_2_5);
 
 		// 좌측 그리드 세팅
@@ -674,6 +592,16 @@ public class p3 implements ActionListener {
 			}
 		});
 
+		// 프레임이 닫힐 때 새 클래스 호출
+	    frame.addWindowListener(new java.awt.event.WindowAdapter() {
+	        @Override
+	        public void windowClosing(java.awt.event.WindowEvent e) {
+	            // 새 클래스 생성자 호출
+	        	 main window = new main();
+                 window.frame.setVisible(true);
+	        }
+	    });
+	    
 		spinner.addChangeListener(new ChangeListener() {
 			@Override
 			public void stateChanged(ChangeEvent e) {
@@ -697,8 +625,6 @@ public class p3 implements ActionListener {
 			}
 		});
 
-		
-		
 		JButton btnNewButton_6 = new JButton("상품삭제");// 상품삭제버튼
 		btnNewButton_6.setBounds(630, 369, 85, 69);
 		frame.getContentPane().add(btnNewButton_6);
@@ -940,16 +866,6 @@ public class p3 implements ActionListener {
 			}
 		});
 
-		  // 프레임이 닫힐 때 새 클래스 호출
-	    frame.addWindowListener(new java.awt.event.WindowAdapter() {
-	        @Override
-	        public void windowClosing(java.awt.event.WindowEvent e) {
-	            // 새 클래스 생성자 호출
-	            main window = new main();
-	            window.frame.setVisible(true);
-	            frame.dispose(); // 현재 창 종료
-	        }
-	    });
 	}
 
 	public void callDatail(int orderId) throws SQLException {

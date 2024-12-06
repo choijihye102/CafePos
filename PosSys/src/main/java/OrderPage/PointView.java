@@ -15,16 +15,22 @@ public class PointView {
 	
 	
 	public String checkCus_point() {
-	    String inputCusPhone = JOptionPane.showInputDialog(frame, "휴대폰 번호를 입력하세요:");
+	    String inputCusPhone = null;
+	    inputCusPhone = JOptionPane.showInputDialog(frame, "휴대폰 번호를 입력하세요:");
 	    System.out.println("입력받은 핸드폰번호 :"+ inputCusPhone);
+	   
 	    if (inputCusPhone == null || inputCusPhone.trim().isEmpty()||inputCusPhone =="") {
 	        JOptionPane.showMessageDialog(frame, "휴대폰 번호를 입력해주세요.");
 	        if(inputCusPhone == null ){//return;
 	        	JOptionPane.showMessageDialog(frame, "다시 하세요");
+	        	return inputCusPhone;
 	        }
 	    }
+	    System.out.println("checkCus_point()이벤트 처리 중: "+ inputCusPhone.toString());
 	    return inputCusPhone;
+	   
 }
+	
 	public String PayCash() {
 	    String inputGet = JOptionPane.showInputDialog(frame, "고객에게 받은 금액을 입력하세요:");
 	    System.out.println("IF에서 받은 금액 :"+ inputGet);

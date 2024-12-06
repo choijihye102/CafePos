@@ -8,9 +8,10 @@ import java.awt.event.ActionListener;
 import java.net.URL;
 
 public class Pay_Card_View extends JFrame {
+	CardDTO cardDTO = new CardDTO();
     private JTextField jtf1, jtf2, jtf3, jtf4, jtf5;
     int j = 5;
-    
+    boolean plug = false;
 
 
     public Integer Pay(int price) {
@@ -111,9 +112,10 @@ public class Pay_Card_View extends JFrame {
 
                 j = payCard.PayCard(amount, cardNum, exp, birth, no);
                 new ConfirmDialogExample().getter(j);
-                dispose();
+                plug = true;
                 
-                 
+                dispose();
+       
             }
         });
 

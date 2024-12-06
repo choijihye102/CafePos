@@ -215,6 +215,34 @@ public class CafeDAO {
 		
 	}
 	
+	public void insertOrder2(CustomerDTO cusDTO, int  finalPrice, int cus_pointUsed  ) {
+		connect();
+		
+		try {
+			// 1. 오라클 데이터베이스에 전송할 SQL문 작성.
+			
+			sql = "insert INTO orders (order_num, cus_id, total_price, card_payment, used_point) VALUES (order_seq.NEXTVAL,?,?,'1',?)";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, cusDTO.getCus_id());
+			pstmt.setInt(2, finalPrice);
+			pstmt.setInt(3, cus_pointUsed);
+			System.out.println("insert주문에 빠진 인자 찾자 => 1 : "+ cusDTO.getCus_id()+ " 2: "+finalPrice +" 3 : "+ cus_pointUsed);
+			
+			// 2. 오라클 데이터베이스에 SQL문 전송 및 SQL문 실행.
+			int res = pstmt.executeUpdate();
+			
+			if(res < 0) {
+				JOptionPane.showMessageDialog(null, "주문등록에 문제가 발생하였습니다.(jdbc)");
+			}
+			// 3. 오라클 데이터베이스에 연결되어 있던 자원 종료.
+			pstmt.close();  con.close();
+		 }catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
 	
 	public void insertDetail(int orderId, int pro_id, int vol  ) {
 		connect();
@@ -275,10 +303,35 @@ public class CafeDAO {
 	}  // update() 메서드 end
 	
 	
+	public void updatePoint(CustomerDTO cusD, int rewardPoints) {
+		connect();
+		
+		try {
+			// 1. 오라클 데이터베이스로 전송할 SQL문을 작성.
+			sql = "UPDATE customer SET cus_point = ? WHERE cus_id  = ?";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, rewardPoints);
+			pstmt.setString(2, cusD.getCus_id());
+		
+			
+			// 2. 오라클 데이터베이스에 SQL문 전송 및 SQL문 실행.
+			int res = pstmt.executeUpdate();
+			
+			if(res < 0) {
+				JOptionPane.showMessageDialog(null, "고객 마일리지 차감에 문제가 발생하였습니다.(jdbc)");
+			}
+			// 3. 오라클 데이터베이스에 연결되어 있던 자원 종료
+			pstmt.close();  con.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 }
-
-
-    
+}
 
 
     
